@@ -1,11 +1,11 @@
 import numpy as np
 from dataclasses import dataclass
-from typing import Optional, List, Union
+from typing import Optional
 from gplearn.genetic import SymbolicRegressor
 from gplearn.functions import make_function
 from SRToolkit.approaches.sr_approach import SR_approach, ApproachConfig
 from SRToolkit.evaluation import SR_evaluator
-from src.utils import *
+from UnivariateSRBenchmark.utils import *
 
 import warnings
 warnings.filterwarnings("ignore")

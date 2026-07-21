@@ -1,4 +1,9 @@
 import sympy as sp
+from pathlib import Path
+
+
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent
 
 
 def sympy_to_srtoolkit_tokens(expr, constants=None):
