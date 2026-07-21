@@ -134,14 +134,6 @@ def run_grid_search(
 def build_custom_dataset(dataset_id: str) -> SR_dataset:
     """
     Build an SR_dataset from one row of the corresponding difficulty parquet file.
-
-    Expects the parquet file to have (at least) columns:
-        - 'equation': string representation of the ground-truth expression
-        - 'X': array-like of shape (n_samples, n_features)
-        - 'Y': array-like of shape (n_samples,)
-
-    Adjust the column names / parsing below if your parquet schema differs
-    (e.g. if X/Y are stored as JSON strings rather than native arrays).
     """
     difficulty, row_index = _parse_dataset_id(dataset_id)
 
