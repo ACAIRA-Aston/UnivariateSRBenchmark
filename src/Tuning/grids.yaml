@@ -1,0 +1,102 @@
+# Each top-level key is the method name (matches --method on the CLI
+# and the key used in the APPROACH_REGISTRY in run_grid_search.py).
+
+Gplearn:
+  population_size: [200, 500, 1000, 2000]
+  generations: [50, 100, 200, 500]
+  tournament_size: [5, 10, 20, 50]
+  p_crossover: [0.6, 0.7, 0.8, 0.9]
+  p_subtree_mutation: [0.05, 0.1, 0.15, 0.2]
+  parsimony_coefficient: [0.0001, 0.001, 0.01, 0.1]
+
+Operon:
+  population_size: [250, 500, 1000, 2000]
+  allowed_evaluations: [50000, 100000, 250000, 500000]
+  crossover_probability: [0.6, 0.7, 0.8, 0.9]
+  mutation_probability: [0.1, 0.15, 0.2, 0.25]
+  max_length: [10, 15, 25, 50]
+
+PySR:
+  population_size: [30, 100, 250, 500]
+  ncycles_per_iteration: [200, 500, 1000, 2000]
+  maxsize: [15, 20, 25, 30]
+  maxdepth: [5, 8, 12, 15]
+  parsimony: [0.0001, 0.001, 0.005, 0.01]
+  niterations: [50, 100, 200, 500]
+
+GPGOMEA:
+  population_size: [100, 250, 500, 1000]
+  generations: [50, 100, 200, 500]
+  max_tree_size: [15, 31, 63, 127]
+
+MRGP:
+  population_size: [200, 500, 1000, 2000]
+  generations: [50, 100, 250, 500]
+  crossover_rate: [0.5, 0.7, 0.8, 0.9]
+  mutation_rate: [0.05, 0.1, 0.15, 0.2]
+  lasso_lambda: [0.001, 0.01, 0.1, 0.5]
+
+EPLEX:
+  population_size: [100, 250, 500, 1000]
+  generations: [50, 100, 200, 300]
+  crossover_rate: [0.6, 0.7, 0.8, 0.9]
+  mutation_rate: [0.05, 0.1, 0.15, 0.2]
+  lexicase_epsilon: [0.01, 0.05, 0.1, 0.2]
+
+FEAT:
+  pop_size: [100, 250, 500, 1000]
+  gens: [50, 100, 250, 500]
+  archive_size: [10, 20, 50, 100]
+  complexity_weight: [0.001, 0.01, 0.1, 0.5]
+  mutation_rate: [0.05, 0.1, 0.15, 0.2]
+
+ITEA:
+  pop_size: [100, 250, 500, 1000]
+  gens: [50, 100, 200, 500]
+  max_terms: [5, 10, 15, 20]
+  max_exponent: [1, 2, 3, 4]
+  mutation_rate: [0.05, 0.1, 0.15, 0.2]
+
+FFX:
+  max_complexity: [10, 20, 50, 100]
+  l1_ratios: [0.1, 0.5, 0.7, 0.9]
+  n_alphas: [50, 100, 200, 500]
+
+uDSR:
+  beam_size: [2, 4, 8, 16]
+  bfgs_restarts: [2, 5, 10, 20]
+  max_length: [15, 25, 40, 60]
+  n_samples: [500, 1000, 5000, 10000]
+  temperature: [0.5, 0.8, 1.0, 1.2]
+
+TPSR:
+  lambda_reg: [0.01, 0.1, 1.0, 5.0]
+  num_candidates: [5, 10, 20, 50]
+  beam_size: [2, 4, 8, 16]
+  bfgs_restarts: [2, 4, 8, 12]
+
+TaylorGP:
+  taylor_order: [2, 3, 4, 5]
+  population_size: [100, 200, 500, 1000]
+  generations: [20, 50, 100, 200]
+  crossover_rate: [0.6, 0.7, 0.8, 0.9]
+  mutation_rate: [0.05, 0.1, 0.15, 0.2]
+
+SBPGP:
+  population_size: [100, 250, 500, 1000]
+  generations: [50, 100, 250, 500]
+  semantic_neighborhood_size: [0.05, 0.1, 0.2, 0.5]
+  semantic_acceptance_threshold: [0.001, 0.01, 0.05, 0.1]
+  crossover_rate: [0.5, 0.7, 0.8, 0.9]
+  mutation_rate: [0.05, 0.1, 0.15, 0.2]
+
+BSR:
+  alpha: [0.1, 0.3, 0.5, 0.7]
+  beta: [-0.5, -1.0, -1.5, -2.0]
+  n_iterations: [1000, 2500, 5000, 10000]
+  burn_in_ratio: [0.1, 0.2, 0.3, 0.5]
+
+NeSymReS:
+  beam_size: [2, 5, 10, 15]
+  bfgs_restarts: [2, 4, 8, 16]
+  number_of_candidates: [5, 10, 25, 50]

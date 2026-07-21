@@ -1,0 +1,28 @@
+{
+  "method": "Gplearn",
+  "run_index": 15,
+  "config": {
+    "population_size": 200,
+    "generations": 50,
+    "tournament_size": 5,
+    "p_crossover": 0.6,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.1
+  },
+  "result": "<SRToolkit.evaluation.sr_evaluator.SR_results object at 0x000001C03647D090>",
+  "SymPy": [
+    "X_0**3 + X_0**2 + X_0",
+    "X_0**3 + X_0**2 + X_0",
+    "-X_0**2 - (-X_0 - 0.68)**3 + log(Abs(X_0)) - Abs(X_0 + 0.68) + 0.81",
+    "X_0**3 + X_0 + Abs(X_0)**2",
+    "(X_0 + sqrt(Abs(2439.0243902439*X_0 + 12996.72966646)))*(X_0**2 + X_0/(X_0 + 1.00001))"
+  ],
+  "errors": [
+    1.7138078682911937e-14,
+    1.7138078682911937e-14,
+    4.3094132272514765,
+    1.3527104445597602e-13,
+    36248.02000125753
+  ],
+  "min_error": 1.7138078682911937e-14
+}

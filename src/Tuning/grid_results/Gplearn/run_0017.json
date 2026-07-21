@@ -1,0 +1,28 @@
+{
+  "method": "Gplearn",
+  "run_index": 17,
+  "config": {
+    "population_size": 200,
+    "generations": 50,
+    "tournament_size": 5,
+    "p_crossover": 0.7,
+    "p_subtree_mutation": 0.05,
+    "parsimony_coefficient": 0.001
+  },
+  "result": "<SRToolkit.evaluation.sr_evaluator.SR_results object at 0x000001C037A1BCA0>",
+  "SymPy": [
+    "X_0**3 + X_0 + Abs(X_0)**(3/2) + Abs((sqrt(X_0**2*Abs(X_0) + Abs(X_0)**(1/4) + Abs((Abs((Abs(X_0)**(3/2) - Abs((0.980122245299884*Abs(X_0) - sqrt(Abs((Abs(X_0)**(3/2) + 0.426*Abs(X_0))*Abs((sqrt(X_0**2*Abs(X_0) + Abs(X_0)**(3/2)*Abs(log(Abs(X_0))) + 0.597*Abs(X_0)) - Abs(X_0)/(Abs(X_0)**(3/2) + 1.0e-5))*log(Abs(X_0))) + log(Abs(sin(X_0))) + Abs(X_0)**(3/2))))*log(Abs(X_0))))*log(Abs(X_0))) - Abs((sqrt(Abs(log(Abs(sin(X_0))) + Abs((sqrt(X_0**2*Abs(X_0) + Abs(X_0)**(3/2)*Abs(log(Abs(X_0))) + Abs(X_0)**(3/2) + 0.772657750883274*sqrt(Abs(X_0))) - Abs(X_0)/(Abs(X_0)**(3/2) + 1.0e-5))*(Abs(X_0)**(3/2) - Abs((sqrt(Abs(-X_0**3 + (Abs(X_0)**(3/2) + 0.772657750883274*sqrt(Abs(X_0)))*Abs(log(Abs(X_0))) + log(X_0**2*Abs(X_0)))) - 0.597*Abs(X_0)/(Abs(X_0)**(3/2) + 1.0e-5))*log(Abs(X_0))))*log(Abs(X_0))) + Abs(sqrt(Abs(X_0**2*Abs(X_0) + log(0.426*Abs(X_0)) + Abs(X_0)**(3/2)*Abs(log(Abs(X_0))))) - Abs(X_0)/(Abs(X_0)**(3/2) + 1.0e-5)))) - 0.426*Abs(X_0)/(sqrt(Abs(X_0)**(3/2) + 0.772657750883274*sqrt(Abs(X_0)))*sqrt(Abs((sqrt(Abs(X_0**2*Abs(X_0) + log(0.426*Abs(X_0)/(Abs(X_0)**(3/2) + 1.0e-5)) + Abs(X_0)**(3/2)*Abs(log(Abs(X_0))))) - Abs(X_0)/(Abs(X_0)**(3/2) + 1.0e-5))*log(Abs(X_0)))) + 1.0e-5))*log(Abs(X_0))))*log(Abs(X_0)))) - 0.426*Abs(X_0)/(0.278044557580255*Abs(X_0)**(3/2) + 1.0e-5))*log(Abs(X_0)))",
+    "X_0**3 + X_0 - log(Abs(X_0**3 + X_0 + (2*X_0 + 4*Abs(X_0)**(3/2) + 2*sqrt(Abs(X_0)) - 0.803409832853359)**2*Abs(2*X_0 + 4*Abs(X_0)**(3/2) + 2*sqrt(Abs(X_0)) - 0.803409832853359) + 3*Abs(X_0)**(3/2) - sqrt(Abs(X_0)) - 0.803409832853359)) + 4*Abs(X_0)**(3/2) - 0.803409832853359",
+    "X_0**3 + exp(X_0/4) + sqrt(Abs(11.4639238634252*X_0**3 - sqrt(Abs(X_0**9/(Abs(X_0) + 1.0e-5)**3 + X_0**3 - 100000.0*X_0 + (X_0**3/(1.0e-5 - 0.000912673/(1.0e-5 + 0.958201604304148/sqrt(exp(X_0) + 1.0e-5))) + sin(X_0**3))/(1.0e-5 + 0.958201604304148/sqrt(11.4639238634252*exp(X_0) + 1.0e-5)))) + Abs(X_0)**(3/2)/((exp(X_0) + 1.0e-5)*sqrt(Abs(X_0 + 1.0e-5)))))",
+    "X_0 + (X_0 + 0.533)**3 + sqrt(Abs(X_0)) - 2*sqrt(Abs((X_0 + 0.533)**3 - 0.31447)) - 0.533*sqrt(Abs(X_0 - 0.533*(X_0 + 0.533)**3 - 0.467*sqrt(Abs(X_0)) + 0.538543660415384))",
+    "X_0**3 + X_0**2 + X_0"
+  ],
+  "errors": [
+    8.262552256801328,
+    19.347477716508337,
+    452.0404811977508,
+    11.986951634490412,
+    1.7138078682911937e-14
+  ],
+  "min_error": 1.7138078682911937e-14
+}
