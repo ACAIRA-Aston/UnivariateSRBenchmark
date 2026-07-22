@@ -113,8 +113,14 @@ class GplearnApproach(SR_approach):
             # gplearn uses X0, X1... -> SRToolkit wants X_0, X_1...
             expr = expr.subs(X_syms['X0'], sp.Symbol(f'X_0'))
 
-            f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
-            values = f(X)
+            if 'X_0' not in str(expr.free_symbols):
+                if expr.is_real:
+                    values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                else:
+                    values = np.repeat(1000, len(self.x_values), axis=0)[:, None]  # Penalize these cases
+            else:
+                f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
+                values = f(X)
             try:
                 tokens, const_values = sympy_to_srtoolkit_tokens(expr)
                 sr_evaluator.evaluate_expr(tokens)

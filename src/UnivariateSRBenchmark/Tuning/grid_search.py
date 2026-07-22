@@ -142,8 +142,8 @@ def build_custom_dataset(dataset_id: str) -> SR_dataset:
         raise FileNotFoundError(f"No parquet file found for difficulty '{difficulty}' at {parquet_path}")
 
     df = pd.read_parquet(parquet_path)
-    # lengths = df["skeleton"].str.len()
-    # median_idx = (lengths - lengths.median()).abs().idxmin()
+    lengths = df["skeleton"].str.len()
+    median_idx = (lengths - lengths.median()).abs().idxmin()
 
     if row_index < 0 or row_index >= len(df):
         raise IndexError(f"Row index {row_index} out of range for '{difficulty}' dataset "
@@ -166,9 +166,7 @@ def build_custom_dataset(dataset_id: str) -> SR_dataset:
     try:
         X_syms = {f"X{i}": sp.Symbol(f"X{i}", real=True) for i in range(n_features)}
         expr = sp.sympify(equation_str, locals=X_syms)
-        expr = expr.subs(
-            {sp.Symbol(f"X{i}"): sp.Symbol(f"X_{i}") for i in range(n_features)}
-        )
+        expr = expr.subs({sp.Symbol(f"X{i}"): sp.Symbol(f"X_{i}") for i in range(n_features)})
         ground_truth_tokens, _ = sympy_to_srtoolkit_tokens(expr)
     except Exception as e:
         print(f"[build_custom_dataset] Warning: could not tokenize ground truth"
@@ -197,5 +195,8 @@ if __name__ == "__main__":
     # dtaset = bm.create_dataset("NG-12")
 
     # If one of the proposed datasets is used:
-    dtaset = 'Easy-9'
+    # For the Easy tier, use 'Easy-9'
+    # For the Medium tier, use 'Medium-0'
+    # For the Hard tier, use 'Hard-9'
+    dtaset = 'Hard-9'
     results = run_grid_search("Gplearn", dtaset)
