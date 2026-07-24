@@ -15,6 +15,7 @@ from pathlib import Path
 from SRToolkit.dataset import SR_dataset
 from SRToolkit.utils import SymbolLibrary
 from typing import Any, Dict, Iterator, List
+
 from UnivariateSRBenchmark.utils import sympy_to_srtoolkit_tokens, get_project_root
 
 
@@ -29,6 +30,8 @@ DATASET_FILES = {
 
 def _get_registry() -> Dict[str, Any]:
     from UnivariateSRBenchmark.Methods.gplearn_approach import GplearnApproach
+    from UnivariateSRBenchmark.Methods.dsr_approach import DSRApproach
+    from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
 
     registry = {
         "Gplearn": GplearnApproach,
@@ -39,8 +42,8 @@ def _get_registry() -> Dict[str, Any]:
         # "EPLEX": EplexApproach,
         # "FEAT": FeatApproach,
         # "ITEA": IteaApproach,
-        # "FFX": FfxApproach,
-        # "uDSR": UdsrApproach,
+        "DSR": DSRApproach,
+        "UDSR": UDSRApproach,
         # "TPSR": TpsrApproach,
         # "TaylorGP": TaylorGPApproach,
         # "SBPGP": SbpGpApproach,
@@ -198,5 +201,5 @@ if __name__ == "__main__":
     # For the Easy tier, use 'Easy-9'
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
-    dtaset = 'Hard-9'
-    results = run_grid_search("Gplearn", dtaset)
+    dtaset = 'Easy-9'
+    results = run_grid_search("UDSR", dtaset)

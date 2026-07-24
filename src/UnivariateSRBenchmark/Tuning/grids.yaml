@@ -57,17 +57,23 @@ ITEA:
   max_exponent: [1, 2, 3, 4]
   mutation_rate: [0.05, 0.1, 0.15, 0.2]
 
-FFX:
-  max_complexity: [10, 20, 50, 100]
-  l1_ratios: [0.1, 0.5, 0.7, 0.9]
-  n_alphas: [50, 100, 200, 500]
+#FFX:  # FFX couldn't handle our datasets and keep throwing "Regularized update failed with ValueError."
+#  max_complexity: [10, 20, 50, 100]
+#  n_alphas: [50, 100, 200, 500]
 
-uDSR:
-  beam_size: [2, 4, 8, 16]
-  bfgs_restarts: [2, 5, 10, 20]
-  max_length: [15, 25, 40, 60]
-  n_samples: [500, 1000, 5000, 10000]
-  temperature: [0.5, 0.8, 1.0, 1.2]
+
+
+# Installed from https://github.com/dso-org/deep-symbolic-optimization-pytorch:
+#pip install numpy==1.26.4 (there are many things to fix within DSO if this numpy version is not used)
+#pip install --no-build-isolation -e ./dso
+DSR:
+  n_samples: [100000, 500000, 1000000]
+  lr: [0.0003, 0.0005, 0.001, 0.01]
+  risk: [0.05, 0.10, 0.15, 0.5]
+UDSR:
+  n_samples: [ 100000, 500000, 1000000 ]
+  lr: [ 0.0003, 0.0005, 0.001, 0.01 ]
+  risk: [ 0.05, 0.10, 0.15, 0.5 ]
 
 TPSR:
   lambda_reg: [0.01, 0.1, 1.0, 5.0]
