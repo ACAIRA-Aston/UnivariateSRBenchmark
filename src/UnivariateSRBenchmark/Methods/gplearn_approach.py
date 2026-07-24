@@ -6,6 +6,7 @@ from gplearn.functions import make_function
 from SRToolkit.approaches.sr_approach import SR_approach, ApproachConfig
 from SRToolkit.evaluation import SR_evaluator
 from UnivariateSRBenchmark.utils import *
+from SRToolkit.utils.types import ModelResult
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -123,10 +124,10 @@ class GplearnApproach(SR_approach):
                 values = f(X)
             try:
                 tokens, const_values = sympy_to_srtoolkit_tokens(expr)
-                sr_evaluator.evaluate_expr(tokens)
-                err = np.sqrt(np.mean((values[:, 0] - y)**2))
-                for key in sr_evaluator.models.keys():
-                    sr_evaluator.models[key].error = err
+                err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
+                sr_evaluator.models[tokens] = ModelResult(expr=tokens, error=err)
+                # for key in sr_evaluator.models.keys():
+                #     sr_evaluator.models[key].error = err
                 self.errors.append(err)
                 self.sympy.append(expr)
             except ValueError:

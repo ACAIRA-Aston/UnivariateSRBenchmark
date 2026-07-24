@@ -58,6 +58,8 @@ def sympy_to_srtoolkit_tokens(expr, constants=None):
             return ["("] + rec(base) + ["^"] + rec(exp_) + [")"]
         if isinstance(e, sp.sin):
             return ["sin", "("] + rec(e.args[0]) + [")"]
+        if isinstance(e, sp.cos):
+            return ["cos", "("] + rec(e.args[0]) + [")"]
         if isinstance(e, sp.tan):
             return ["tan", "("] + rec(e.args[0]) + [")"]
         if isinstance(e, sp.exp):
