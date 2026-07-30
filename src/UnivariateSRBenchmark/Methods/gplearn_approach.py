@@ -125,7 +125,7 @@ class GplearnApproach(SR_approach):
             try:
                 tokens, const_values = sympy_to_srtoolkit_tokens(expr)
                 err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
-                sr_evaluator.models[tokens] = ModelResult(expr=tokens, error=err)
+                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
                 # for key in sr_evaluator.models.keys():
                 #     sr_evaluator.models[key].error = err
                 self.errors.append(err)

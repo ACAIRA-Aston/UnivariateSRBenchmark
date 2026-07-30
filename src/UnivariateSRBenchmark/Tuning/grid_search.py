@@ -30,6 +30,7 @@ DATASET_FILES = {
 
 def _get_registry() -> Dict[str, Any]:
     from UnivariateSRBenchmark.Methods.gplearn_approach import GplearnApproach
+    from UnivariateSRBenchmark.Methods.pysr_approach import PySRApproach
     from UnivariateSRBenchmark.Methods.dsr_approach import DSRApproach
     from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
     from UnivariateSRBenchmark.Methods.e2e_approach import E2EApproach
@@ -37,7 +38,7 @@ def _get_registry() -> Dict[str, Any]:
     registry = {
         "Gplearn": GplearnApproach,
         # "Operon": OperonApproach,
-        # "PySR": PySRApproach,
+        "PySR": PySRApproach,
         # "GPGOMEA": GPGomeaApproach,
         # "MRGP": MRGPApproach,
         # "EPLEX": EplexApproach,
@@ -204,4 +205,4 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("E2E", dtaset)
+    results = run_grid_search("PySR", dtaset)
