@@ -34,10 +34,11 @@ def _get_registry() -> Dict[str, Any]:
     from UnivariateSRBenchmark.Methods.dsr_approach import DSRApproach
     from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
     from UnivariateSRBenchmark.Methods.e2e_approach import E2EApproach
+    from UnivariateSRBenchmark.Methods.operon_approach import OperonApproach
 
     registry = {
         "Gplearn": GplearnApproach,
-        # "Operon": OperonApproach,
+        "Operon": OperonApproach,
         "PySR": PySRApproach,
         # "GPGOMEA": GPGomeaApproach,
         # "MRGP": MRGPApproach,
@@ -205,4 +206,4 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("PySR", dtaset)
+    results = run_grid_search("Operon", dtaset)

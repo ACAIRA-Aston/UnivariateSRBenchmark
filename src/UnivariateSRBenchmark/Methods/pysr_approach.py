@@ -44,7 +44,29 @@ class PySRApproach(SR_approach):
         self.errors = []
 
         self.binary_operators = ["+", "-", "*", "/"]
-        self.unary_operators = ["sin", "tan", "exp", "log", "sqrt", "abs", "cube"]
+        self.unary_operators = [
+            # Trigonometric
+            "sin",
+            "tan",
+            "asin",
+            "atan",
+            # Hyperbolic
+            "sinh",
+            "cosh",
+            "tanh",
+            "asinh",
+            "acosh",
+            "atanh",
+            # Exponential & Logarithmic
+            "exp",
+            "log",
+            # Basic Arithmetic
+            "sqrt",
+            "abs",
+            # Algebraic Structural Ops
+            "square",
+            "cube",
+        ]
 
     def prepare(self):
         pass

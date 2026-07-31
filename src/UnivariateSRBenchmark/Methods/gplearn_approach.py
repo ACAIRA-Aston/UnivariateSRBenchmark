@@ -63,7 +63,50 @@ class GplearnApproach(SR_approach):
 
         tan = make_function(function=_protected_tan, name='tan', arity=1)
 
-        self.function_set = ['add', 'sub', 'mul', 'div', 'sin', tan, exp, 'neg', 'log', 'sqrt', 'abs', cube]
+        def _protected_arcsin(x):
+            return np.arcsin(np.clip(x, -1.0, 1.0))
+
+        arcsin = make_function(function=_protected_arcsin, name='arcsin', arity=1)
+
+        def _protected_arctan(x):
+            return np.arctan(x)
+
+        arctan = make_function(function=_protected_arctan, name='arctan', arity=1)
+
+        # --- Hyperbolic ---
+        def _protected_sinh(x):
+            return np.sinh(np.clip(x, -100, 100))
+
+        sinh = make_function(function=_protected_sinh, name='sinh', arity=1)
+
+        def _protected_cosh(x):
+            return np.cosh(np.clip(x, -100, 100))
+
+        cosh = make_function(function=_protected_cosh, name='cosh', arity=1)
+
+        def _protected_tanh(x):
+            return np.tanh(x)
+
+        tanh = make_function(function=_protected_tanh, name='tanh', arity=1)
+
+        def _protected_arsinh(x):
+            return np.arcsinh(x)
+
+        arsinh = make_function(function=_protected_arsinh, name='arsinh', arity=1)
+
+        def _protected_arcosh(x):
+            return np.arccosh(1.0 + np.abs(x))
+
+        arcosh = make_function(function=_protected_arcosh, name='arcosh', arity=1)
+
+        def _protected_artanh(x):
+            # Domain (-1, 1) -> clip to [-0.999, 0.999]
+            return np.arctanh(np.clip(x, -0.999, 0.999))
+
+        artanh = make_function(function=_protected_artanh, name='artanh', arity=1)
+
+        self.function_set = ['add', 'sub', 'mul', 'div', 'sin', tan, exp, 'neg', 'log', 'sqrt', 'abs', cube,
+                             arcsin, arctan, sinh, cosh, tanh, arsinh, arcosh, artanh]
 
         self.converter = {
             "add": lambda x, y: x + y,
@@ -74,6 +117,15 @@ class GplearnApproach(SR_approach):
             "neg": lambda x: -x,
             "sin": sp.sin,
             "tan": sp.tan,
+            "arcsin": sp.asin,
+            "arctan": sp.atan,
+            # Hyperbolic
+            "sinh": sp.sinh,
+            "cosh": sp.cosh,
+            "tanh": sp.tanh,
+            "arsinh": sp.asinh,
+            "arcosh": sp.acosh,
+            "artanh": sp.atanh,
             "exp": lambda x: sp.exp(x),
             # gplearn protected sqrt
             "sqrt": lambda x: sp.sqrt(sp.Abs(x)),

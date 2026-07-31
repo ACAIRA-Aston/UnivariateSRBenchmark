@@ -14,7 +14,7 @@ Operon:
   allowed_evaluations: [50000, 100000, 250000, 500000]
   crossover_probability: [0.6, 0.7, 0.8, 0.9]
   mutation_probability: [0.1, 0.15, 0.2, 0.25]
-  max_length: [10, 15, 25, 50]
+  max_length: [15, 25, 50]
 
 PySR:
   population_size: [30, 100, 250, 500]

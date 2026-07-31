@@ -38,6 +38,9 @@ function_map["atan"] = Token(np.arctan, "atan", arity=1, complexity=4)
 function_map["sinh"] = Token(safe_sinh, "sinh", arity=1, complexity=4)
 function_map["cosh"] = Token(safe_cosh, "cosh", arity=1, complexity=4)
 function_map["tanh"] = Token(safe_tanh, "tanh", arity=1, complexity=4)
+function_map["asinh"] = Token(np.arcsinh, "asinh", arity=1, complexity=4)
+function_map["acosh"] = Token(np.arccosh, "acosh", arity=1, complexity=4)
+function_map["atanh"] = Token(np.arctanh, "atanh", arity=1, complexity=4)
 
 
 @dataclass
@@ -75,7 +78,7 @@ class DSRApproach(SR_approach):
                 "task_type": "regression",
                 "function_set": ["add", "sub", "mul", "div",
                                  "sin", "tan", "asin", "atan",
-                                 "sinh", "cosh", "tanh",
+                                 "sinh", "cosh", "tanh", "asinh", "acosh", "atanh",
                                  "exp", "log", "sqrt", "abs"],
             },
             # Hyperparameters for generation and sampling
