@@ -47,7 +47,7 @@ class E2EApproach(SR_approach):
 
         model_path = Path(os.path.join(get_project_root(), "UnivariateSRBenchmark\\Methods\\E2E\\model.pt"))
         self.model = torch.load(model_path, map_location=torch.device('cuda'), weights_only=False)
-        print("Model successfully loaded on ", self.model.device)
+        print("Model successfully loaded on", self.model.device)
 
 
     def prepare(self):

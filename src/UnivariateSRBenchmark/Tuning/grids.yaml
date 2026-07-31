@@ -76,9 +76,9 @@ UDSR:
   risk: [ 0.05, 0.10, 0.15, 0.5 ]
 
 E2E:
-  num_bags: [50, 100, 200]
-  beam_size: [1, 5, 10]
-  k_top: [1, 5, 10]
+  B: [50, 100, 200]  # num_bags
+  C: [1, 5, 10]  # beam_size
+  K: [1, 5, 10]  # k_top
 
 TPSR:
   lambda_reg: [0.01, 0.1, 1.0, 5.0]
@@ -108,6 +108,5 @@ BSR:
   burn_in_ratio: [0.1, 0.2, 0.3, 0.5]
 
 NeSymReS:
-  beam_size: [2, 5, 10, 15]
+  beam_size: [2, 5, 10]
   bfgs_restarts: [2, 4, 8, 16]
-  number_of_candidates: [5, 10, 25, 50]

@@ -33,6 +33,7 @@ def _get_registry() -> Dict[str, Any]:
     from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
     from UnivariateSRBenchmark.Methods.e2e_approach import E2EApproach
     from UnivariateSRBenchmark.Methods.operon_approach import OperonApproach
+    from UnivariateSRBenchmark.Methods.nesymres_approach import NeSymReSApproach
 
     registry = {
         "Gplearn": GplearnApproach,
@@ -50,7 +51,7 @@ def _get_registry() -> Dict[str, Any]:
         # "TaylorGP": TaylorGPApproach,
         # "SBPGP": SbpGpApproach,
         # "BSR": BsrApproach,
-        # "NeSymReS": NeSymReSApproach,
+        "NeSymReS": NeSymReSApproach,
     }
     return registry
 
@@ -204,4 +205,4 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("Operon", dtaset)
+    results = run_grid_search("NeSymReS", dtaset)
