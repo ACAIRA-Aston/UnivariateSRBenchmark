@@ -5,6 +5,10 @@
       <sourceFolder url="file://$MODULE_DIR$/deep-symbolic-optimization-pytorch/dso" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods/TPSR/nesymres/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods/TaylorGP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods/gpg/src/pypkg" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.14 (giorgioenv314) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -14,7 +14,7 @@ from functools import partial
 import numexpr as ne
 import sympytorch
 import torch
-from ..utils import timeout, MyTimeoutError
+from UnivariateSRBenchmark.Methods.E2E.utils import timeout, MyTimeoutError
 
 
 def simplify(f, seconds):

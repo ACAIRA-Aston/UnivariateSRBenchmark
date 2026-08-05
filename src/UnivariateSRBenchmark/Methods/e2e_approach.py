@@ -1,5 +1,7 @@
 import os
+import gc
 import UnivariateSRBenchmark.Methods.E2E as E2E
+import UnivariateSRBenchmark.Methods.E2E.envs as envs
 import sys
 import torch
 import numpy as np
@@ -16,30 +18,32 @@ warnings.filterwarnings("ignore")
 
 
 sys.modules["symbolicregression"] = E2E
+sys.modules["symbolicregression.model"] = E2E.model
+sys.modules["symbolicregression.envs"] = envs
 import pathlib
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath  # This deals with PosixPath errors when loading the model
 
 # Tuning Grid
-#   num_bags: [50, 100, 200]
-#   beam_size: [1, 5, 10]
-#   bfgs_restarts: [1, 5, 10]
+#   B: [50, 100, 200]  # num_bags
+#   C: [1, 5, 10]  # beam_size
+#   K: [1, 5, 10]  # k_top
 
 
 @dataclass
 class E2EConfig(ApproachConfig):
     name: str = "E2E"
     B: int = 50
-    C: int = 1
+    # C: int = 1
     K: float = 1
 
 
 class E2EApproach(SR_approach):
     def __init__(self, B: int = 50,
-                       C: int = 1,
+                       # C: int = 1,
                        K: float = 1):
         self.cfg = E2EConfig(B=B,
-                             C=C,
+                             # C=C,
                              K=K)
         super().__init__(self.cfg)
         self.sympy = []
@@ -95,9 +99,13 @@ class E2EApproach(SR_approach):
             except ValueError:
                 print("Iteration omitted")
 
+        del model
+        gc.collect()
+        torch.cuda.empty_cache()
+
     @classmethod
     def from_config(self, config: dict) -> "E2EApproach":
         return self(B=config.get("B", 50),
-                    C=config.get("C", 1),
+                    # C=config.get("C", 1),
                     K=config.get("K", 1),
         )

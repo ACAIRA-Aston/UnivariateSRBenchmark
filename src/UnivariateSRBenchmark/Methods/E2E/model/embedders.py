@@ -8,7 +8,7 @@ from typing import Tuple, List
 from abc import ABC, abstractmethod
 import torch
 import torch.nn as nn
-from ..utils import to_cuda
+from UnivariateSRBenchmark.Methods.E2E.utils import to_cuda
 import torch.nn.functional as F
 
 MultiDimensionalFloat = List[float]

@@ -78,12 +78,6 @@ class GPGomeaApproach(SR_approach):
         if not hasattr(model, "model") or model.model is None or sr_evaluator.should_stop:
             return
 
-        if hasattr(model, "model"):
-            print("Raw Model:", model.model)
-        if hasattr(model, "models_"):
-            for i, m in enumerate(model.models_):
-                print(f"Model {i}:", m)
-
         try:
             # gpg's internal variable convention is x_0, x_1, ... ; model.model
             # is already a sympy expression, so we just rename the symbol.
