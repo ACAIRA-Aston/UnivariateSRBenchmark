@@ -3,9 +3,11 @@ Generic grid search runner.
 """
 import os
 import re
+import sys
 import yaml
 import json
 import itertools
+import subprocess
 import numpy as np
 import sympy as sp
 import pandas as pd
@@ -37,6 +39,7 @@ def _get_registry() -> Dict[str, Any]:
     from UnivariateSRBenchmark.Methods.gpgomea_approach import GPGomeaApproach
     from UnivariateSRBenchmark.Methods.taylorgp_approach import TaylorGPApproach
     from UnivariateSRBenchmark.Methods.tpsr_approach import TPSRApproach
+    from UnivariateSRBenchmark.Methods.bsr_approach import BSRApproach
 
     registry = {
         "Gplearn": GplearnApproach,
@@ -53,7 +56,7 @@ def _get_registry() -> Dict[str, Any]:
         "TPSR": TPSRApproach,
         "TaylorGP": TaylorGPApproach,
         # "SBPGP": SbpGpApproach,
-        # "BSR": BsrApproach,
+        "BSR": BSRApproach,
         "NeSymReS": NeSymReSApproach,
     }
     return registry
@@ -109,6 +112,21 @@ def run_grid_search(
     - method: name matching a key in grids.yaml / APPROACH_REGISTRY, e.g. "Gplearn"
     - dataset: an SRToolkit dataset object with .evaluate_approach(...)
     """
+    target_version = "1.26.4"
+    restore_version = "2.3.5"
+    if 'DSR' in method:
+        print(f"Downgrading numpy to {target_version}...")
+        subprocess.check_call(
+            [
+                sys.executable,
+                "-m",
+                "pip",
+                "install",
+                f"numpy=={target_version}",
+                "--quiet",
+            ]
+        )
+
     grid = load_grid(method, grids_path)
     approach_cls = get_approach_class(method)
 
@@ -126,8 +144,10 @@ def run_grid_search(
         model = approach_cls.from_config(cfg)
         dataset.evaluate_approach(model, num_experiments=num_experiments)
 
+        non_nan_errors = [e for e in model.errors if not np.isnan(e)]
+        min_err = min(non_nan_errors) if non_nan_errors else None
         record = {"dataset":dataset, "method": method, "run_index": i, "config": cfg, "SymPy": model.sympy,
-                  "errors": model.errors, "min_error": min(model.errors)}
+                  "errors": model.errors, "min_error": min_err}
         all_results.append(record)
 
         with open(out_path / f"run_{i:04d}.json", "w") as f:
@@ -137,6 +157,19 @@ def run_grid_search(
     with open(out_path / "summary.json", "w") as f:
         json.dump(all_results, f, indent=2, default=str)
 
+
+    if 'DSR' in method:
+        print(f"Restoring numpy to {restore_version}...")
+        subprocess.check_call(
+            [
+                sys.executable,
+                "-m",
+                "pip",
+                "install",
+                f"numpy=={restore_version}",
+                "--quiet",
+            ]
+        )
     return all_results
 
 
@@ -208,4 +241,4 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("TPSR", dtaset)
+    results = run_grid_search("BSR", dtaset)

@@ -82,7 +82,7 @@ def sympy_to_srtoolkit_tokens(expr, constants=None):
             return ["atan", "("] + rec(e.args[0]) + [")"]
         if isinstance(e, sp.asinh):
             return ["asinh", "("] + rec(e.args[0]) + [")"]
-        if isinstance(e, sp.cosh):
+        if isinstance(e, sp.acosh):
             return ["acosh", "("] + rec(e.args[0]) + [")"]
         if isinstance(e, sp.atanh):
             return ["atanh", "("] + rec(e.args[0]) + [")"]

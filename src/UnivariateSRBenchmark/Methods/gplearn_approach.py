@@ -184,6 +184,10 @@ class GplearnApproach(SR_approach):
                 self.sympy.append(expr)
             except ValueError:
                 print("Iteration omitted")
+                tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                self.errors.append(1000)
+                self.sympy.append(sp.sympify('0'))
 
     @classmethod
     def from_config(self, config: dict) -> "GplearnApproach":

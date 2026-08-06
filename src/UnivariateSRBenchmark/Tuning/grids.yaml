@@ -88,7 +88,7 @@ TPSR:
 
 TaylorGP:
   population_size: [100, 200, 500]
-  generations: [20, 50, 100, 200]
+  generations: [50, 100, 200, 500]
   crossover_rate: [0.6, 0.7, 0.8]
   mutation_rate: [0.05, 0.1, 0.15, 0.2]
 
@@ -101,10 +101,9 @@ TaylorGP:
 #  mutation_rate: [0.05, 0.1, 0.15, 0.2]
 
 BSR:
-  alpha: [0.1, 0.3, 0.5, 0.7]
-  beta: [-0.5, -1.0, -1.5, -2.0]
-  n_iterations: [1000, 2500, 5000, 10000]
-  burn_in_ratio: [0.1, 0.2, 0.3, 0.5]
+  tree_num: [2, 4, 8]
+  iter_num: [50, 100, 200, 500]
+  beta: [-0.1, -1, -2, -5]
 
 NeSymReS:
   beam_size: [2, 5, 10]
