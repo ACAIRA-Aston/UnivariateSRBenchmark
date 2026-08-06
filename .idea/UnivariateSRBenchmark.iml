@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/deep-symbolic-optimization-pytorch/dso" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/feat/build/lib.win-amd64-cpython-310" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods/TPSR/nesymres/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/UnivariateSRBenchmark/Methods/TaylorGP/src" isTestSource="false" />

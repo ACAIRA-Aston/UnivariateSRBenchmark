@@ -55,7 +55,6 @@ ITEA:
   gens: [50, 100, 200, 500]
   max_terms: [5, 10, 15, 20]
   max_exponent: [1, 2, 3, 4]
-  mutation_rate: [0.05, 0.1, 0.15, 0.2]
 
 #FFX:  # FFX couldn't handle our datasets and keep throwing "Regularized update failed with ValueError."
 #  max_complexity: [10, 20, 50, 100]

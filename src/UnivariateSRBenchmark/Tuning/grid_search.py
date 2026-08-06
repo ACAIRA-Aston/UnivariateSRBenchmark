@@ -29,17 +29,18 @@ DATASET_FILES = {
 
 
 def _get_registry() -> Dict[str, Any]:
-    from UnivariateSRBenchmark.Methods.gplearn_approach import GplearnApproach
-    from UnivariateSRBenchmark.Methods.pysr_approach import PySRApproach
     from UnivariateSRBenchmark.Methods.dsr_approach import DSRApproach
-    from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
     from UnivariateSRBenchmark.Methods.e2e_approach import E2EApproach
-    from UnivariateSRBenchmark.Methods.operon_approach import OperonApproach
-    from UnivariateSRBenchmark.Methods.nesymres_approach import NeSymReSApproach
-    from UnivariateSRBenchmark.Methods.gpgomea_approach import GPGomeaApproach
-    from UnivariateSRBenchmark.Methods.taylorgp_approach import TaylorGPApproach
-    from UnivariateSRBenchmark.Methods.tpsr_approach import TPSRApproach
     from UnivariateSRBenchmark.Methods.bsr_approach import BSRApproach
+    from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
+    from UnivariateSRBenchmark.Methods.pysr_approach import PySRApproach
+    from UnivariateSRBenchmark.Methods.tpsr_approach import TPSRApproach
+    from UnivariateSRBenchmark.Methods.itea_approach import IteaApproach
+    from UnivariateSRBenchmark.Methods.operon_approach import OperonApproach
+    from UnivariateSRBenchmark.Methods.gplearn_approach import GplearnApproach
+    from UnivariateSRBenchmark.Methods.gpgomea_approach import GPGomeaApproach
+    from UnivariateSRBenchmark.Methods.nesymres_approach import NeSymReSApproach
+    from UnivariateSRBenchmark.Methods.taylorgp_approach import TaylorGPApproach
 
     registry = {
         "Gplearn": GplearnApproach,
@@ -49,13 +50,12 @@ def _get_registry() -> Dict[str, Any]:
         # "MRGP": MRGPApproach,
         # "EPLEX": EplexApproach,
         # "FEAT": FeatApproach,
-        # "ITEA": IteaApproach,
+        "ITEA": IteaApproach,
         "DSR": DSRApproach,
         "UDSR": UDSRApproach,
         "E2E": E2EApproach,
         "TPSR": TPSRApproach,
         "TaylorGP": TaylorGPApproach,
-        # "SBPGP": SbpGpApproach,
         "BSR": BSRApproach,
         "NeSymReS": NeSymReSApproach,
     }
@@ -114,18 +114,9 @@ def run_grid_search(
     """
     target_version = "1.26.4"
     restore_version = "2.3.5"
-    if 'DSR' in method:
+    if method in ['DSR', 'uDSR', 'BSR']:
         print(f"Downgrading numpy to {target_version}...")
-        subprocess.check_call(
-            [
-                sys.executable,
-                "-m",
-                "pip",
-                "install",
-                f"numpy=={target_version}",
-                "--quiet",
-            ]
-        )
+        subprocess.check_call([sys.executable, "-m", "pip", "install", f"numpy=={target_version}", "--quiet",])
 
     grid = load_grid(method, grids_path)
     approach_cls = get_approach_class(method)
@@ -241,4 +232,4 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("BSR", dtaset)
+    results = run_grid_search("ITEA", dtaset)
