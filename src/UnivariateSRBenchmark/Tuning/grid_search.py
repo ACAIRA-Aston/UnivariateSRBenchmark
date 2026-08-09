@@ -2,16 +2,28 @@
 Generic grid search runner.
 """
 import os
+
+# Add MSYS2 core utilities (head.exe, cat.exe, rm.exe) to PATH
+msys_usr_bin = r"C:\msys64\usr\bin"
+git_usr_bin = r"C:\Program Files\Git\usr\bin"
+if os.path.exists(msys_usr_bin):
+    os.environ["PATH"] = msys_usr_bin + os.pathsep + os.environ["PATH"]
+elif os.path.exists(git_usr_bin):
+    os.environ["PATH"] = git_usr_bin + os.pathsep + os.environ["PATH"]
+# Run the following for a permanent fix on Windows:
+# [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\msys64\usr\bin", [EnvironmentVariableTarget]::User)
 import re
 import sys
 import yaml
 import json
 import itertools
+import importlib
 import subprocess
 import numpy as np
 import sympy as sp
 import pandas as pd
 from pathlib import Path
+from typing import Type, Dict, Tuple
 from SRToolkit.dataset import SR_dataset
 from SRToolkit.utils import SymbolLibrary
 from typing import Any, Dict, Iterator, List
@@ -27,40 +39,22 @@ DATASET_FILES = {
     "Hard": Path("UnivariateSRBenchmark/Datasets/hard.parquet"),
 }
 
-
-def _get_registry() -> Dict[str, Any]:
-    from UnivariateSRBenchmark.Methods.dsr_approach import DSRApproach
-    from UnivariateSRBenchmark.Methods.e2e_approach import E2EApproach
-    from UnivariateSRBenchmark.Methods.bsr_approach import BSRApproach
-    from UnivariateSRBenchmark.Methods.udsr_approach import UDSRApproach
-    from UnivariateSRBenchmark.Methods.pysr_approach import PySRApproach
-    from UnivariateSRBenchmark.Methods.tpsr_approach import TPSRApproach
-    from UnivariateSRBenchmark.Methods.itea_approach import IteaApproach
-    from UnivariateSRBenchmark.Methods.operon_approach import OperonApproach
-    from UnivariateSRBenchmark.Methods.gplearn_approach import GplearnApproach
-    from UnivariateSRBenchmark.Methods.gpgomea_approach import GPGomeaApproach
-    from UnivariateSRBenchmark.Methods.nesymres_approach import NeSymReSApproach
-    from UnivariateSRBenchmark.Methods.taylorgp_approach import TaylorGPApproach
-
-    registry = {
-        "Gplearn": GplearnApproach,
-        "Operon": OperonApproach,
-        "PySR": PySRApproach,
-        "GPGOMEA": GPGomeaApproach,
-        # "MRGP": MRGPApproach,
-        # "EPLEX": EplexApproach,
-        # "FEAT": FeatApproach,
-        "ITEA": IteaApproach,
-        "DSR": DSRApproach,
-        "UDSR": UDSRApproach,
-        "E2E": E2EApproach,
-        "TPSR": TPSRApproach,
-        "TaylorGP": TaylorGPApproach,
-        "BSR": BSRApproach,
-        "NeSymReS": NeSymReSApproach,
-    }
-    return registry
-
+# Map each method name to (module_path, class_name)
+_APPROACH_REGISTRY: Dict[str, Tuple[str, str]] = {
+    "Gplearn": ("UnivariateSRBenchmark.Methods.gplearn_approach", "GplearnApproach"),
+    "Operon": ("UnivariateSRBenchmark.Methods.operon_approach", "OperonApproach"),
+    "PySR": ("UnivariateSRBenchmark.Methods.pysr_approach", "PySRApproach"),
+    "GPGOMEA": ("UnivariateSRBenchmark.Methods.gpgomea_approach", "GPGomeaApproach"),
+    "ITEA": ("UnivariateSRBenchmark.Methods.itea_approach", "IteaApproach"),
+    "DSR": ("UnivariateSRBenchmark.Methods.dsr_approach", "DSRApproach"),
+    "UDSR": ("UnivariateSRBenchmark.Methods.udsr_approach", "UDSRApproach"),
+    "E2E": ("UnivariateSRBenchmark.Methods.e2e_approach", "E2EApproach"),
+    "TPSR": ("UnivariateSRBenchmark.Methods.tpsr_approach", "TPSRApproach"),
+    "TaylorGP": ("UnivariateSRBenchmark.Methods.taylorgp_approach", "TaylorGPApproach"),
+    "BSR": ("UnivariateSRBenchmark.Methods.bsr_approach", "BSRApproach"),
+    "NeSymReS": ("UnivariateSRBenchmark.Methods.nesymres_approach", "NeSymReSApproach"),
+    "AIFeynman": ("UnivariateSRBenchmark.Methods.aifeynman_approach", "AIFeynmanApproach"),
+}
 
 def load_grid(method: str, grids_path: Path = GRIDS_PATH) -> Dict[str, List[Any]]:
     with open(grids_path, "r") as f:
@@ -80,14 +74,15 @@ def iter_configs(grid: Dict[str, List[Any]]) -> Iterator[Dict[str, Any]]:
         yield dict(zip(keys, values))
 
 
-def get_approach_class(method: str):
-    registry = _get_registry()
-    if method not in registry:
-        raise KeyError(
-            f"No Approach class registered for method '{method}'. "
-            f"Registered methods: {sorted(registry.keys())}"
-        )
-    return registry[method]
+def get_approach_class(name: str) -> Type:
+    """Dynamically imports and returns the approach class for the given method name."""
+    if name not in _APPROACH_REGISTRY:
+        valid_methods = ", ".join(_APPROACH_REGISTRY.keys())
+        raise KeyError(f"Unknown approach '{name}'. Valid options: {valid_methods}")
+
+    module_path, class_name = _APPROACH_REGISTRY[name]
+    module = importlib.import_module(module_path)
+    return getattr(module, class_name)
 
 
 def _parse_dataset_id(dataset_id: str):
@@ -113,7 +108,7 @@ def run_grid_search(
     - dataset: an SRToolkit dataset object with .evaluate_approach(...)
     """
     target_version = "1.26.4"
-    restore_version = "2.3.5"
+    restore_version = "2.1.0"
     if method in ['DSR', 'uDSR', 'BSR']:
         print(f"Downgrading numpy to {target_version}...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", f"numpy=={target_version}", "--quiet",])
@@ -124,8 +119,13 @@ def run_grid_search(
     if isinstance(dataset, str):
         dataset = build_custom_dataset(dataset)
 
-    (Path(out_dir) if out_dir else Path(f"grid_results/{dataset.dataset_name}")).mkdir(parents=True, exist_ok=True)
-    out_path = Path(out_dir) if out_dir else Path(f"grid_results/{dataset.dataset_name}/{method}")
+    try:
+        (Path(out_dir) if out_dir else Path(f"grid_results/{dataset.dataset_name}")).mkdir(parents=True, exist_ok=True)
+        out_path = Path(out_dir) if out_dir else Path(f"grid_results/{dataset.dataset_name}/{method}")
+    except AttributeError:  # If a different SRToolkit version is used
+        (Path(out_dir) if out_dir else Path(f"grid_results/{dataset.kwargs['dataset_name']}")).mkdir(parents=True, exist_ok=True)
+        out_path = Path(out_dir) if out_dir else Path(f"grid_results/{dataset.kwargs['dataset_name']}/{method}")
+
     out_path.mkdir(parents=True, exist_ok=True)
 
     all_results = []
@@ -232,4 +232,4 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("ITEA", dtaset)
+    results = run_grid_search("AIFeynman", dtaset)

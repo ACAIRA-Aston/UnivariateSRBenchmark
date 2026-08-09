@@ -107,3 +107,7 @@ BSR:
 NeSymReS:
   beam_size: [2, 5, 10]
   bfgs_restarts: [2, 4, 8, 16]
+
+AIFeynman:
+  polyfit_deg: [2, 3, 4, 5]
+  NN_epochs: [500, 1000, 2000]
