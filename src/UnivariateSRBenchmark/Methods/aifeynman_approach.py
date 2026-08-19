@@ -35,24 +35,21 @@ class AIFeynmanConfig(ApproachConfig):
     BF_ops_file_type: str = "19ops.txt"  # Operator set ('7ops.txt', '10ops.txt', '14ops.txt', '19ops.txt')
     polyfit_deg: int = 4            # Maximum polynomial degree for polyfit step
     NN_epochs: int = 1000           # Neural network training epochs for symmetry/separability detection
-    test_percentage: int = 0        # 0 because SRToolkit handles train/test evaluation separately
 
 
 class AIFeynmanApproach(SR_approach):
     def __init__(
         self,
         BF_try_time: int = 60,
-        BF_ops_file_type: str = "14ops.txt",
+        BF_ops_file_type: str = "19ops.txt",
         polyfit_deg: int = 4,
         NN_epochs: int = 1000,
-        test_percentage: int = 0,
     ):
         self.cfg = AIFeynmanConfig(
             BF_try_time=BF_try_time,
             BF_ops_file_type=BF_ops_file_type,
             polyfit_deg=polyfit_deg,
             NN_epochs=NN_epochs,
-            test_percentage=test_percentage,
         )
         super().__init__(self.cfg)
         self.sympy = []
@@ -93,7 +90,6 @@ class AIFeynmanApproach(SR_approach):
                     BF_ops_file_type=self.cfg.BF_ops_file_type,
                     polyfit_deg=self.cfg.polyfit_deg,
                     NN_epochs=self.cfg.NN_epochs,
-                    test_percentage=self.cfg.test_percentage,
                 )
             except Exception as e:
                 print(f"AI Feynman execution encountered an issue: {e}")
@@ -154,8 +150,7 @@ class AIFeynmanApproach(SR_approach):
     def from_config(cls, config: dict) -> "AIFeynmanApproach":
         return cls(
             BF_try_time=config.get("BF_try_time", 60),
-            BF_ops_file_type=config.get("BF_ops_file_type", "14ops.txt"),
+            BF_ops_file_type=config.get("BF_ops_file_type", "19ops.txt"),
             polyfit_deg=config.get("polyfit_deg", 4),
             NN_epochs=config.get("NN_epochs", 1000),
-            test_percentage=config.get("test_percentage", 0),
         )

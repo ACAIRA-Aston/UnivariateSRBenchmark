@@ -1,6 +1,7 @@
 import numpy as np
 from dataclasses import dataclass
 from typing import Optional
+import multiprocessing as mp
 from gplearn.genetic import SymbolicRegressor
 from gplearn.functions import make_function
 from SRToolkit.approaches.sr_approach import SR_approach, ApproachConfig
@@ -18,7 +19,93 @@ warnings.filterwarnings("ignore")
 # p_crossover: [0.6, 0.7, 0.8, 0.9]
 # p_subtree_mutation: [0.05, 0.1, 0.15, 0.2]
 # parsimony_coefficient: [0.0001, 0.001, 0.01, 0.1]
+import time
 
+
+def _search_worker(cfg, function_set, X, y, seed, queue):
+    try:
+        model = SymbolicRegressor(
+            population_size=cfg.population_size,
+            generations=cfg.generations,
+            tournament_size=cfg.tournament_size,
+            p_crossover=cfg.p_crossover,
+            p_subtree_mutation=cfg.p_subtree_mutation,
+            p_hoist_mutation=0.05,
+            p_point_mutation=0.05,
+            parsimony_coefficient=cfg.parsimony_coefficient,
+            function_set=function_set,
+            random_state=seed,
+            warm_start=False,
+            verbose=False
+        )
+
+        start = time.time()
+        model.fit(X, y)
+        print("Time elapsed fit: ", time.time() - start)
+
+        converter = {
+            "add": lambda x, y: x + y,
+            "sub": lambda x, y: x - y,
+            "mul": lambda x, y: x * y,
+            # protected division
+            "div": lambda x, y: x / (y + 0.00001),
+            "neg": lambda x: -x,
+            "sin": sp.sin,
+            "tan": sp.tan,
+            "arcsin": sp.asin,
+            "arctan": sp.atan,
+            # Hyperbolic
+            "sinh": sp.sinh,
+            "cosh": sp.cosh,
+            "tanh": sp.tanh,
+            "arsinh": sp.asinh,
+            "arcosh": sp.acosh,
+            "artanh": sp.atanh,
+            "exp": lambda x: sp.exp(x),
+            # gplearn protected sqrt
+            "sqrt": lambda x: sp.sqrt(sp.Abs(x)),
+            # gplearn protected log
+            "log": lambda x: sp.log(sp.Abs(x)),
+            "abs": sp.Abs,
+            "cube": lambda x: x ** 3,
+        }
+
+        program = model._program
+        if program is not None:
+            start = time.time()
+            X_syms = {'X0': sp.Symbol('X0', real=True)}
+            expr = sp.sympify(str(program), locals={**converter, **X_syms})
+            expr = expr.subs(X_syms['X0'], sp.Symbol('X_0'))
+
+            if 'X_0' not in str(expr.free_symbols):
+                if expr.is_real:
+                    values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                else:
+                    values = np.repeat(1000, len(X), axis=0)[:, None]
+            else:
+                f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
+                values = f(X)
+            print("Time processing: ", time.time() - start)
+
+            try:
+                start = time.time()
+                tokens, const_values = sympy_to_srtoolkit_tokens(expr)
+                err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
+                print("Time evaluation: ", time.time() - start)
+
+                queue.put({"tokens": tokens, "err": err, "expr": expr})
+                return
+            except ValueError:
+                pass
+
+        # Failure fallback inside execution
+        tokens, _ = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+        queue.put({"tokens": tokens, "err": 1000, "expr": sp.sympify('0')})
+
+    except Exception as e:
+        print(f"Iteration omitted due to error: {e}")
+        tokens, _ = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+        queue.put({"tokens": tokens, "err": 1000, "expr": sp.sympify('0')})
 
 @dataclass
 class GplearnConfig(ApproachConfig):
@@ -108,86 +195,67 @@ class GplearnApproach(SR_approach):
         self.function_set = ['add', 'sub', 'mul', 'div', 'sin', tan, exp, 'neg', 'log', 'sqrt', 'abs', cube,
                              arcsin, arctan, sinh, cosh, tanh, arsinh, arcosh, artanh]
 
-        self.converter = {
-            "add": lambda x, y: x + y,
-            "sub": lambda x, y: x - y,
-            "mul": lambda x, y: x * y,
-            # protected division
-            "div": lambda x, y: x / (y + 0.00001),
-            "neg": lambda x: -x,
-            "sin": sp.sin,
-            "tan": sp.tan,
-            "arcsin": sp.asin,
-            "arctan": sp.atan,
-            # Hyperbolic
-            "sinh": sp.sinh,
-            "cosh": sp.cosh,
-            "tanh": sp.tanh,
-            "arsinh": sp.asinh,
-            "arcosh": sp.acosh,
-            "artanh": sp.atanh,
-            "exp": lambda x: sp.exp(x),
-            # gplearn protected sqrt
-            "sqrt": lambda x: sp.sqrt(sp.Abs(x)),
-            # gplearn protected log
-            "log": lambda x: sp.log(sp.Abs(x)),
-            "abs": sp.Abs,
-            "cube": lambda x: x ** 3,
-        }
-
     def prepare(self):
         pass
 
-    def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
+    def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None, timeout: float = 1000.0):
+        if sr_evaluator.should_stop:
+            return
+
         X = sr_evaluator.X
         y = sr_evaluator.y
 
-        model = SymbolicRegressor(
-            population_size=self.cfg.population_size,
-            generations=self.cfg.generations,
-            tournament_size=self.cfg.tournament_size,
-            p_crossover=self.cfg.p_crossover,
-            p_subtree_mutation=self.cfg.p_subtree_mutation,
-            p_hoist_mutation=0.05,
-            p_point_mutation=0.05,
-            parsimony_coefficient=self.cfg.parsimony_coefficient,
-            function_set=self.function_set,
-            random_state=seed,
-            warm_start=False,
-            verbose=True
-        )
-        model.fit(X, y)
+        ct = 0
+        while True:
+            queue = mp.Queue()
 
-        # Extract and evaluate expressions
-        program = model._program
-        if program is not None and not sr_evaluator.should_stop:
-            X_syms = {f'X0':sp.Symbol('X0', real=True)}
-            expr = sp.sympify(str(program), locals={**self.converter, **X_syms})
-            # gplearn uses X0, X1... -> SRToolkit wants X_0, X_1...
-            expr = expr.subs(X_syms['X0'], sp.Symbol(f'X_0'))
+            # Spawn worker process
+            p = mp.Process(
+                target=_search_worker,
+                args=(
+                    self.cfg,
+                    self.function_set,
+                    X,
+                    y,
+                    seed,
+                    queue
+                )
+            )
+            p.start()
 
-            if 'X_0' not in str(expr.free_symbols):
-                if expr.is_real:
-                    values = np.repeat(float(expr), len(X), axis=0)[:, None]
-                else:
-                    values = np.repeat(1000, len(self.x_values), axis=0)[:, None]  # Penalize these cases
-            else:
-                f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
-                values = f(X)
-            try:
-                tokens, const_values = sympy_to_srtoolkit_tokens(expr)
-                err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
+            # Block main process for up to `timeout` seconds
+            p.join(timeout=timeout)
+
+            # Timeout check: kill process and restart loop
+            if p.is_alive():
+                print(f"Execution exceeded {timeout} seconds. Terminating process and restarting...")
+                p.terminate()
+                p.join()
+                continue  # Restarts the search loop from the beginning
+
+            # Successful completion check
+            if not queue.empty():
+                res = queue.get()
+                tokens = res["tokens"]
+                err = res["err"]
+                expr = res["expr"]
+
+                # Update main process state
                 sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
-                # for key in sr_evaluator.models.keys():
-                #     sr_evaluator.models[key].error = err
                 self.errors.append(err)
                 self.sympy.append(expr)
-            except ValueError:
-                print("Iteration omitted")
-                tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
-                self.errors.append(1000)
-                self.sympy.append(sp.sympify('0'))
+                break
+            else:
+                if ct == 0:
+                    ct += 1
+                    print("Worker process exited unexpectedly without returning data. Retrying...")
+                else:
+                    print("Iteration omitted")
+                    tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                    self.errors.append(1000)
+                    self.sympy.append(sp.sympify('0'))
+                    break
 
     @classmethod
     def from_config(self, config: dict) -> "GplearnApproach":

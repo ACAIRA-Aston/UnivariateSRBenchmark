@@ -43,13 +43,13 @@ class BSRApproach(SR_approach):
 
         model = BSRRegressor(itr_num = self.cfg.iter_num, beta = self.cfg.beta,
                              tree_num=self.cfg.tree_num)
-        model.fit(X, y)
-
-        # Extract and evaluate expressions
-        print(model._model())
-        program = (model._model()[0]).replace('x[0]', 'X_0')
-        program = program.replace('[', '(').replace(']', ')')
         try:
+            model.fit(X, y)
+
+            # Extract and evaluate expressions
+            print(model._model())
+            program = (model._model()[0]).replace('x[0]', 'X_0')
+            program = program.replace('[', '(').replace(']', ')')
             if not sr_evaluator.should_stop:
                 expr = sp.sympify(program)
 

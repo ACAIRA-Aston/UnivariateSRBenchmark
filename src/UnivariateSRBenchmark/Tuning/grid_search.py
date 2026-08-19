@@ -109,9 +109,9 @@ def run_grid_search(
     """
     target_version = "1.26.4"
     restore_version = "2.1.0"
-    if method in ['DSR', 'uDSR', 'BSR']:
-        print(f"Downgrading numpy to {target_version}...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", f"numpy=={target_version}", "--quiet",])
+    # if method in ['DSR', 'uDSR', 'BSR']:
+    #     print(f"Downgrading numpy to {target_version}...")
+    #     subprocess.check_call([sys.executable, "-m", "pip", "install", f"numpy=={target_version}", "--quiet",])
 
     grid = load_grid(method, grids_path)
     approach_cls = get_approach_class(method)
@@ -129,38 +129,42 @@ def run_grid_search(
     out_path.mkdir(parents=True, exist_ok=True)
 
     all_results = []
+    if method == 'AIFeynman':
+        num_experiments = 1  # it's deterministic
+
     for i, cfg in enumerate(iter_configs(grid)):
-        print(f"[{method}] run {i:04d} — config: {cfg}")
+        if i >= 2:
+            print(f"[{method}] run {i:04d} — config: {cfg}")
 
-        model = approach_cls.from_config(cfg)
-        dataset.evaluate_approach(model, num_experiments=num_experiments)
+            model = approach_cls.from_config(cfg)
+            dataset.evaluate_approach(model, num_experiments=num_experiments)
 
-        non_nan_errors = [e for e in model.errors if not np.isnan(e)]
-        min_err = min(non_nan_errors) if non_nan_errors else None
-        record = {"dataset":dataset, "method": method, "run_index": i, "config": cfg, "SymPy": model.sympy,
-                  "errors": model.errors, "min_error": min_err}
-        all_results.append(record)
+            non_nan_errors = [e for e in model.errors if not np.isnan(e)]
+            min_err = min(non_nan_errors) if non_nan_errors else None
+            record = {"dataset":dataset, "method": method, "run_index": i, "config": cfg, "SymPy": model.sympy,
+                      "errors": model.errors, "min_error": min_err}
+            all_results.append(record)
 
-        with open(out_path / f"run_{i:04d}.json", "w") as f:
-            json.dump(record, f, indent=2, default=str)
+            with open(out_path / f"run_{i:04d}.json", "w") as f:
+                json.dump(record, f, indent=2, default=str)
 
     # summary file with every run for convenience
     with open(out_path / "summary.json", "w") as f:
         json.dump(all_results, f, indent=2, default=str)
 
 
-    if 'DSR' in method:
-        print(f"Restoring numpy to {restore_version}...")
-        subprocess.check_call(
-            [
-                sys.executable,
-                "-m",
-                "pip",
-                "install",
-                f"numpy=={restore_version}",
-                "--quiet",
-            ]
-        )
+    # if 'DSR' in method:
+    #     print(f"Restoring numpy to {restore_version}...")
+    #     subprocess.check_call(
+    #         [
+    #             sys.executable,
+    #             "-m",
+    #             "pip",
+    #             "install",
+    #             f"numpy=={restore_version}",
+    #             "--quiet",
+    #         ]
+    #     )
     return all_results
 
 
@@ -232,4 +236,5 @@ if __name__ == "__main__":
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
     dtaset = 'Easy-9'
-    results = run_grid_search("AIFeynman", dtaset)
+    print(dtaset)
+    results = run_grid_search("PySR", dtaset)

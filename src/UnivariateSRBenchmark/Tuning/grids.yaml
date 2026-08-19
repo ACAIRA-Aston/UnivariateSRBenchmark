@@ -3,10 +3,10 @@
 
 Gplearn:
   population_size: [200, 500, 1000, 2000]
-  generations: [50, 100, 200, 500]
-  tournament_size: [5, 10, 20, 50]
+  generations: [100, 200, 500]
+  tournament_size: [10, 20, 50]
   p_crossover: [0.6, 0.7, 0.8]
-  p_subtree_mutation: [0.05, 0.1, 0.15, 0.2]
+  p_subtree_mutation: [0.05, 0.1, 0.2]
   parsimony_coefficient: [0.0001, 0.001, 0.01, 0.1]
 
 Operon:
@@ -18,11 +18,11 @@ Operon:
 
 PySR:
   population_size: [30, 100, 250, 500]
-  ncycles_per_iteration: [200, 500, 1000, 2000]
-  maxsize: [15, 20, 25, 30]
-  maxdepth: [5, 8, 12, 15]
+  ncycles_per_iteration: [500, 1000, 2000]
+  maxsize: [20, 25, 30]
+  maxdepth: [5, 10, 15]
   parsimony: [0.0001, 0.001, 0.005, 0.01]
-  niterations: [50, 100, 200, 500]
+  niterations: [100, 200, 500]
 
 GPGOMEA:
   population_size: [100, 250, 500, 1000]
@@ -54,7 +54,7 @@ ITEA:
   pop_size: [100, 250, 500, 1000]
   gens: [50, 100, 200, 500]
   max_terms: [5, 10, 15, 20]
-  max_exponent: [1, 2, 3, 4]
+  max_exponent: [2, 3, 4]
 
 #FFX:  # FFX couldn't handle our datasets and keep throwing "Regularized update failed with ValueError."
 #  max_complexity: [10, 20, 50, 100]
