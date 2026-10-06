@@ -1,0 +1,39 @@
+{
+  "problem_id": "Medium-17",
+  "tier": "Medium",
+  "method": "DSR",
+  "original_equation": "1.20752229403757 + 5.07057979323449*tanh(0.8*x)**4/(tan(4.667*x + 1.275) - 3.187)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "sin(cosh(cosh(sqrt(atan(X_0**2)))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.8126455459261849
+    ],
+    "inter_r2": [
+      0.20443600979462861
+    ],
+    "extra_mse": [
+      0.7412639784857605
+    ],
+    "extra_r2": [
+      -0.00020102557010193145
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.8126455459261849,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.20443600979462861,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.7412639784857605,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.00020102557010193145,
+    "extra_r2_std": 0.0
+  }
+}

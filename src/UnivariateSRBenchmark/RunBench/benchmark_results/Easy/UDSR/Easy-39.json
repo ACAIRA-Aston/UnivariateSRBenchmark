@@ -1,0 +1,84 @@
+{
+  "problem_id": "Easy-39",
+  "tier": "Easy",
+  "method": "UDSR",
+  "original_equation": "0.289124971717545 + 0.0459085847853569*cosh(0.799688028077473*x - 0.00311971922526973)/(-2.53*x + 2.045*log(2.822*x**2 - x + 0.189589474040853) - 0.096)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "(sin(asinh(X_0)) - tanh(X_0))/sqrt(1 - (sin(asinh(X_0)) - tanh(X_0))**2)",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))",
+    "-atanh(atanh(tanh(X_0) - tanh(sin(asinh(X_0)))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.06629650994680061,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338,
+      0.08622389259440338
+    ],
+    "inter_r2": [
+      0.7895543336560432,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343,
+      0.7262986460922343
+    ],
+    "extra_mse": [
+      2.0526554834400277,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      0.6771685742985059,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.08423115432964312,
+    "inter_mse_std": 0.00597821479428083,
+    "inter_r2_mean": 0.7326242148486151,
+    "inter_r2_std": 0.018976706269142687,
+    "extra_mse_mean": 2.0526554834400277,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.6771685742985059,
+    "extra_r2_std": 0.0
+  }
+}

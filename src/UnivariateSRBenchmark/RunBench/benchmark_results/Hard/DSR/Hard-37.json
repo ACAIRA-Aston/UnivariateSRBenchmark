@@ -1,0 +1,39 @@
+{
+  "problem_id": "Hard-37",
+  "tier": "Hard",
+  "method": "DSR",
+  "original_equation": "0.000678710620645059*(-3.797 - 2.5*acosh(2.536*x**2 + 2.009*x + 1.49887853974178)/(x + 0.618))**4 + 0.00103653864104605*(1.274 - 2.662*atanh(0.0999*x))**4 - 0.86318520285603",
+  "config": {
+    "n_samples": 100000,
+    "lr": 0.0003,
+    "risk": 0.5
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "sin(asinh(X_0 + 1))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.2407849410760718
+    ],
+    "inter_r2": [
+      0.6314428176974829
+    ],
+    "extra_mse": [
+      4.487091844045865
+    ],
+    "extra_r2": [
+      -0.31986387114222437
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.2407849410760718,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.6314428176974829,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 4.487091844045865,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.31986387114222437,
+    "extra_r2_std": 0.0
+  }
+}

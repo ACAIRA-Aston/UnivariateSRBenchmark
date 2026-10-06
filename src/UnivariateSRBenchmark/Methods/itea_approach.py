@@ -150,8 +150,10 @@ class IteaApproach(SR_approach):
         pass
 
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        X = sr_evaluator.X
-        y = sr_evaluator.y
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
 
         model = ITEA_regressor(
             popsize=self.cfg.pop_size,

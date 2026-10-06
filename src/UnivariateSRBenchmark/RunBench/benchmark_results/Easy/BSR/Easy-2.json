@@ -1,0 +1,84 @@
+{
+  "problem_id": "Easy-2",
+  "tier": "Easy",
+  "method": "BSR",
+  "original_equation": "0.127360580388133*asinh(x) - 0.0496785230092481 + 0.0506223944159201*cosh(0.077010330468411*x**2 + 0.0304509017273274*x - 0.00554206411437359)/(1.35*x + 1.631)",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 50,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "0",
+    "0",
+    "0",
+    "cos(acosh(tanh(exp(sqrt(exp(acosh(sin(sinh(atan(cosh(log(X_0))))**2))**(-3)))))**(-6)))**2",
+    "log(atanh(sqrt(sqrt(X_0 - sqrt(tan(asinh(atanh(X_0))**2)))*asinh(X_0))))",
+    "cos(tanh(asin(exp(cos(cosh(sin(cos(X_0))))))))",
+    "0",
+    "0",
+    "-sqrt(exp(acosh(atanh(log((cos(sqrt(log(sqrt(atanh(X_0)))))**2)**(3/2))**3))))",
+    "cos(X_0**(3/2))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.21561965682168363,
+      0.21561965682168363,
+      0.21561965682168363,
+      NaN,
+      NaN,
+      NaN,
+      0.21561965682168363,
+      0.21561965682168363,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      -0.006223512824759636,
+      -0.006223512824759636,
+      -0.006223512824759636,
+      NaN,
+      NaN,
+      NaN,
+      -0.006223512824759636,
+      -0.006223512824759636,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      8.059423097941686,
+      8.059423097941686,
+      8.059423097941686,
+      NaN,
+      NaN,
+      NaN,
+      8.059423097941686,
+      8.059423097941686,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      -0.01358535096027369,
+      -0.01358535096027369,
+      -0.01358535096027369,
+      NaN,
+      NaN,
+      NaN,
+      -0.01358535096027369,
+      -0.01358535096027369,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.21561965682168363,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.006223512824759636,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 8.059423097941686,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.01358535096027369,
+    "extra_r2_std": 0.0
+  }
+}

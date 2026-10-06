@@ -1,0 +1,84 @@
+{
+  "problem_id": "Medium-43",
+  "tier": "Medium",
+  "method": "BSR",
+  "original_equation": "-0.00524362295326646*cosh(0.066476101841388*x**2 - 0.128697733164927*x + 0.0654124842119258) + 0.313739695106429 + 0.00186274350027228*(2.411 - 4.944*x)/(2.308 - 3.899*atan(x + 2.816))",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 200,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "-atan(cosh(exp(tan(acosh(sin(log(-atan(X_0*sinh(tan(exp(X_0))) - X_0)))))**2)) - asinh(sin(atanh(Abs(X_0**2)))**9))",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "-atanh(log(sqrt(acosh(-X_0)**(3/2))))",
+    "-cos(1/sqrt(cosh(asinh(acosh(acosh(exp(X_0))))**2)))",
+    "Abs(asin(sin(sinh(Abs(asin(sin(acosh(atan(cosh(asin(acosh(log(acosh(X_0)))))))**2)))))))",
+    "1/tanh(cosh(Abs(sinh(exp(cos(sinh(log(cos(X_0**2)))))))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      0.12221999397459371,
+      0.12221999397459371,
+      0.12221999397459371,
+      0.12221999397459371,
+      0.12221999397459371,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      -0.6213248223514258,
+      -0.6213248223514258,
+      -0.6213248223514258,
+      -0.6213248223514258,
+      -0.6213248223514258,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      8.900020056055725,
+      8.900020056055725,
+      8.900020056055725,
+      8.900020056055725,
+      8.900020056055725,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      -0.742980729723226,
+      -0.742980729723226,
+      -0.742980729723226,
+      -0.742980729723226,
+      -0.742980729723226,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.12221999397459371,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.6213248223514258,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 8.900020056055727,
+    "extra_mse_std": 1.7763568394002505e-15,
+    "extra_r2_mean": -0.742980729723226,
+    "extra_r2_std": 0.0
+  }
+}

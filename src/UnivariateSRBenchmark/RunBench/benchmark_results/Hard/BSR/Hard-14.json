@@ -1,0 +1,84 @@
+{
+  "problem_id": "Hard-14",
+  "tier": "Hard",
+  "method": "BSR",
+  "original_equation": "9.95191932459245e-6*(0.321 - 3.727*atan(4.586*x + 0.822))**(11/2)/(0.194*sin(x + 1.913) - 0.251) + 0.230597101037436",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 100,
+    "beta": -2
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "Abs(cos(X_0))",
+    "tanh(tan(sqrt(tanh(tan(X_0)))) - asinh(sinh(X_0)))",
+    "asin(X_0)",
+    "sqrt(X_0) - X_0",
+    "1/Abs(X_0)",
+    "asinh(sin(exp(X_0)))",
+    "log(X_0)**3",
+    "X_0**3",
+    "log(log(sinh(X_0)))",
+    "X_0**2 - 1/log(X_0)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      1.6053810805166489,
+      NaN,
+      NaN,
+      NaN,
+      548.8244829813636,
+      1.3228680159506379,
+      NaN,
+      75583.04299406272,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      -0.46771731408782724,
+      NaN,
+      NaN,
+      NaN,
+      -500.76198401927894,
+      -0.20943015638312668,
+      NaN,
+      -69100.68694533837,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      0.8320310366219933,
+      NaN,
+      NaN,
+      NaN,
+      0.13904301692218182,
+      0.3624682948624424,
+      NaN,
+      744874.4091351624,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      -5.004663976649549,
+      NaN,
+      NaN,
+      NaN,
+      -0.003456070950165868,
+      -1.615888370792733,
+      NaN,
+      -5375664.49178389,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 19033.69893153514,
+    "inter_mse_std": 32649.54372122754,
+    "inter_r2_mean": -17400.531519207027,
+    "inter_r2_std": 29849.797782151083,
+    "extra_mse_mean": 186218.93566937768,
+    "extra_mse_std": 322539.88798982557,
+    "extra_r2_mean": -1343917.7789480772,
+    "extra_r2_std": 2327730.049960845
+  }
+}

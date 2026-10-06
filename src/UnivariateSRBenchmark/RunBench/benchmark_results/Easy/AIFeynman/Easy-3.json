@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-3",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "-0.048867399214893 - 1.26445390595607/(0.849*x + 1.401*sin(2.911*x)*atan(0.321*x**3 - x**2 + 0.637*x - 3.214))",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "0.763214307731609"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      1.6853955038129285
+    ],
+    "inter_r2": [
+      -0.5211667423487565
+    ],
+    "extra_mse": [
+      0.6564012513157675
+    ],
+    "extra_r2": [
+      -23.005115775771294
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.6853955038129285,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.5211667423487565,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.6564012513157675,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -23.005115775771294,
+    "extra_r2_std": 0.0
+  }
+}

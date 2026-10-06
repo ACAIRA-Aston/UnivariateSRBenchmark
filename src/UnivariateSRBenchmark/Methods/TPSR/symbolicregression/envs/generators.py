@@ -2,24 +2,17 @@
 # All rights reserved.
 
 from abc import ABC, abstractmethod
-from ast import parse
-from operator import length_hint, xor
 
 # from turtle import degrees
 import numpy as np
-import math
 import scipy.special
 import copy
 from logging import getLogger
-import time
-from numpy.compat.py3k import npy_load_module
-from sympy import Min
 from UnivariateSRBenchmark.Methods.TPSR.symbolicregression.envs import encoders
 from collections import defaultdict
 from scipy.stats import special_ortho_group
 
 logger = getLogger()
-import random
 
 operators_real = {
     "add": 2,

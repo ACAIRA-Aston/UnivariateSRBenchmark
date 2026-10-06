@@ -1,0 +1,39 @@
+{
+  "problem_id": "Medium-11",
+  "tier": "Medium",
+  "method": "DSR",
+  "original_equation": "-6.02802494852155*tan(0.0151996435556462*tan(2.51*x - 3.137) + 0.00451733406473804) + 0.0270741440218542 - 3.99065600132811/(4.965*x + 0.032)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-asinh(asin(pi/4))/X_0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.1460393697399305
+    ],
+    "inter_r2": [
+      0.8659864685309207
+    ],
+    "extra_mse": [
+      0.18573127754488106
+    ],
+    "extra_r2": [
+      0.03453667290320883
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.1460393697399305,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.8659864685309207,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.18573127754488106,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.03453667290320883,
+    "extra_r2_std": 0.0
+  }
+}

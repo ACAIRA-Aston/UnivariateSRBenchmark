@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-18",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "3.75850773132574*sinh(1.107*sqrt(0.677715765429051*x + 6.88618320924049)/(3.423*x**2 + x + 2.656) - 0.315) + 0.647138851117368",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-0.688440918922424*asin(sin(cos(4.14742827415466*atan(X_0))) - 0.147647440433502)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.8465140743454032
+    ],
+    "inter_r2": [
+      0.21385520976819827
+    ],
+    "extra_mse": [
+      0.0004980370749751218
+    ],
+    "extra_r2": [
+      -0.23060240911154217
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.8465140743454032,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.21385520976819827,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.0004980370749751218,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.23060240911154217,
+    "extra_r2_std": 0.0
+  }
+}

@@ -198,12 +198,14 @@ class GplearnApproach(SR_approach):
     def prepare(self):
         pass
 
-    def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None, timeout: float = 1000.0):
+    def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None, timeout: float = 9000.0):
         if sr_evaluator.should_stop:
             return
 
-        X = sr_evaluator.X
-        y = sr_evaluator.y
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
 
         ct = 0
         while True:
@@ -228,10 +230,19 @@ class GplearnApproach(SR_approach):
 
             # Timeout check: kill process and restart loop
             if p.is_alive():
-                print(f"Execution exceeded {timeout} seconds. Terminating process and restarting...")
-                p.terminate()
-                p.join()
-                continue  # Restarts the search loop from the beginning
+                if ct == 0:
+                    ct += 1
+                    print(f"Execution exceeded {timeout} seconds. Terminating process and restarting...")
+                    p.terminate()
+                    p.join()
+                    continue  # Restarts the search loop from the beginning
+                else:
+                    print("Iteration omitted")
+                    tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                    self.errors.append(1000)
+                    self.sympy.append(sp.sympify('0'))
+                    break
 
             # Successful completion check
             if not queue.empty():
@@ -246,16 +257,7 @@ class GplearnApproach(SR_approach):
                 self.sympy.append(expr)
                 break
             else:
-                if ct == 0:
-                    ct += 1
-                    print("Worker process exited unexpectedly without returning data. Retrying...")
-                else:
-                    print("Iteration omitted")
-                    tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
-                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
-                    self.errors.append(1000)
-                    self.sympy.append(sp.sympify('0'))
-                    break
+                print("Worker process exited unexpectedly without returning data. Retrying...")
 
     @classmethod
     def from_config(self, config: dict) -> "GplearnApproach":

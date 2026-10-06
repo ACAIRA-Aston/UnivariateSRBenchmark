@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-19",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "2.31557120457041 - 1.06646897301184*log(11.7756133012541 - 1.16771442207548*x)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-sinh(sinh(tanh(sin(asinh(X_0))))) + atan(X_0)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.0656486187789472
+    ],
+    "inter_r2": [
+      0.8780170243246561
+    ],
+    "extra_mse": [
+      1.6243398629207422
+    ],
+    "extra_r2": [
+      0.6084721026476116
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.0656486187789472,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.8780170243246561,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 1.6243398629207422,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.6084721026476116,
+    "extra_r2_std": 0.0
+  }
+}

@@ -10,8 +10,7 @@ if os.path.exists(msys_usr_bin):
     os.environ["PATH"] = msys_usr_bin + os.pathsep + os.environ["PATH"]
 elif os.path.exists(git_usr_bin):
     os.environ["PATH"] = git_usr_bin + os.pathsep + os.environ["PATH"]
-# Run the following for a permanent fix on Windows:
-# [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\msys64\usr\bin", [EnvironmentVariableTarget]::User)
+
 import re
 import sys
 import yaml
@@ -22,49 +21,23 @@ import subprocess
 import numpy as np
 import sympy as sp
 import pandas as pd
-from pathlib import Path
-from typing import Type, Dict, Tuple
+from typing import Type
 from SRToolkit.dataset import SR_dataset
 from SRToolkit.utils import SymbolLibrary
-from typing import Any, Dict, Iterator, List
+from typing import Any, Iterator, List
 
 from UnivariateSRBenchmark.utils import sympy_to_srtoolkit_tokens, get_project_root
-
+from UnivariateSRBenchmark.config import *
 
 GRIDS_PATH = Path(__file__).parent / "grids.yaml"
+GRID_RESULTS_PATH = Path(__file__).parent / "grid_results"
 
-DATASET_FILES = {
-    "Easy": Path("UnivariateSRBenchmark/Datasets/easy.parquet"),
-    "Medium": Path("UnivariateSRBenchmark/Datasets/medium.parquet"),
-    "Hard": Path("UnivariateSRBenchmark/Datasets/hard.parquet"),
-}
-
-# Map each method name to (module_path, class_name)
-_APPROACH_REGISTRY: Dict[str, Tuple[str, str]] = {
-    "Gplearn": ("UnivariateSRBenchmark.Methods.gplearn_approach", "GplearnApproach"),
-    "Operon": ("UnivariateSRBenchmark.Methods.operon_approach", "OperonApproach"),
-    "PySR": ("UnivariateSRBenchmark.Methods.pysr_approach", "PySRApproach"),
-    "GPGOMEA": ("UnivariateSRBenchmark.Methods.gpgomea_approach", "GPGomeaApproach"),
-    "ITEA": ("UnivariateSRBenchmark.Methods.itea_approach", "IteaApproach"),
-    "DSR": ("UnivariateSRBenchmark.Methods.dsr_approach", "DSRApproach"),
-    "UDSR": ("UnivariateSRBenchmark.Methods.udsr_approach", "UDSRApproach"),
-    "E2E": ("UnivariateSRBenchmark.Methods.e2e_approach", "E2EApproach"),
-    "TPSR": ("UnivariateSRBenchmark.Methods.tpsr_approach", "TPSRApproach"),
-    "TaylorGP": ("UnivariateSRBenchmark.Methods.taylorgp_approach", "TaylorGPApproach"),
-    "BSR": ("UnivariateSRBenchmark.Methods.bsr_approach", "BSRApproach"),
-    "NeSymReS": ("UnivariateSRBenchmark.Methods.nesymres_approach", "NeSymReSApproach"),
-    "AIFeynman": ("UnivariateSRBenchmark.Methods.aifeynman_approach", "AIFeynmanApproach"),
-}
 
 def load_grid(method: str, grids_path: Path = GRIDS_PATH) -> Dict[str, List[Any]]:
     with open(grids_path, "r") as f:
         all_grids = yaml.safe_load(f)
-
     if method not in all_grids:
-        raise KeyError(
-            f"No grid found for method '{method}'. "
-            f"Available methods: {sorted(all_grids.keys())}"
-        )
+        raise KeyError(f"No grid found for method '{method}'. "f"Available methods: {sorted(all_grids.keys())}")
     return all_grids[method]
 
 
@@ -75,12 +48,10 @@ def iter_configs(grid: Dict[str, List[Any]]) -> Iterator[Dict[str, Any]]:
 
 
 def get_approach_class(name: str) -> Type:
-    """Dynamically imports and returns the approach class for the given method name."""
-    if name not in _APPROACH_REGISTRY:
-        valid_methods = ", ".join(_APPROACH_REGISTRY.keys())
+    if name not in APPROACH_REGISTRY:
+        valid_methods = ", ".join(APPROACH_REGISTRY.keys())
         raise KeyError(f"Unknown approach '{name}'. Valid options: {valid_methods}")
-
-    module_path, class_name = _APPROACH_REGISTRY[name]
+    module_path, class_name = APPROACH_REGISTRY[name]
     module = importlib.import_module(module_path)
     return getattr(module, class_name)
 
@@ -107,11 +78,12 @@ def run_grid_search(
     - method: name matching a key in grids.yaml / APPROACH_REGISTRY, e.g. "Gplearn"
     - dataset: an SRToolkit dataset object with .evaluate_approach(...)
     """
-    target_version = "1.26.4"
-    restore_version = "2.1.0"
+    # target_version = "1.26.4"  # Just a reminder that DSR, UDSR, and BSR works on numpy 1.26.4 while the other methods don't
+    # restore_version = "2.1.0"
     # if method in ['DSR', 'uDSR', 'BSR']:
     #     print(f"Downgrading numpy to {target_version}...")
     #     subprocess.check_call([sys.executable, "-m", "pip", "install", f"numpy=={target_version}", "--quiet",])
+    #     # install pip install setuptools==81.0.0
 
     grid = load_grid(method, grids_path)
     approach_cls = get_approach_class(method)
@@ -120,11 +92,14 @@ def run_grid_search(
         dataset = build_custom_dataset(dataset)
 
     try:
-        (Path(out_dir) if out_dir else Path(f"grid_results/{dataset.dataset_name}")).mkdir(parents=True, exist_ok=True)
-        out_path = Path(out_dir) if out_dir else Path(f"grid_results/{dataset.dataset_name}/{method}")
-    except AttributeError:  # If a different SRToolkit version is used
-        (Path(out_dir) if out_dir else Path(f"grid_results/{dataset.kwargs['dataset_name']}")).mkdir(parents=True, exist_ok=True)
-        out_path = Path(out_dir) if out_dir else Path(f"grid_results/{dataset.kwargs['dataset_name']}/{method}")
+        dataset_name = dataset.dataset_name
+    except AttributeError:
+        dataset_name = dataset.kwargs["dataset_name"]
+
+    if out_dir is not None:
+        out_path = Path(out_dir)
+    else:
+        out_path = GRID_RESULTS_PATH / dataset_name / method
 
     out_path.mkdir(parents=True, exist_ok=True)
 
@@ -133,38 +108,24 @@ def run_grid_search(
         num_experiments = 1  # it's deterministic
 
     for i, cfg in enumerate(iter_configs(grid)):
-        if i >= 2:
-            print(f"[{method}] run {i:04d} — config: {cfg}")
+        print(f"[{method}] run {i:04d} — config: {cfg}")
 
-            model = approach_cls.from_config(cfg)
-            dataset.evaluate_approach(model, num_experiments=num_experiments)
+        model = approach_cls.from_config(cfg)
+        dataset.evaluate_approach(model, num_experiments=num_experiments)
 
-            non_nan_errors = [e for e in model.errors if not np.isnan(e)]
-            min_err = min(non_nan_errors) if non_nan_errors else None
-            record = {"dataset":dataset, "method": method, "run_index": i, "config": cfg, "SymPy": model.sympy,
-                      "errors": model.errors, "min_error": min_err}
-            all_results.append(record)
+        non_nan_errors = [e for e in model.errors if not np.isnan(e)]
+        min_err = min(non_nan_errors) if non_nan_errors else None
+        record = {"dataset":dataset, "method": method, "run_index": i, "config": cfg, "SymPy": model.sympy,
+                  "errors": model.errors, "min_error": min_err}
+        all_results.append(record)
 
-            with open(out_path / f"run_{i:04d}.json", "w") as f:
-                json.dump(record, f, indent=2, default=str)
+        with open(out_path / f"run_{i:04d}.json", "w") as f:
+            json.dump(record, f, indent=2, default=str)
 
     # summary file with every run for convenience
     with open(out_path / "summary.json", "w") as f:
         json.dump(all_results, f, indent=2, default=str)
 
-
-    # if 'DSR' in method:
-    #     print(f"Restoring numpy to {restore_version}...")
-    #     subprocess.check_call(
-    #         [
-    #             sys.executable,
-    #             "-m",
-    #             "pip",
-    #             "install",
-    #             f"numpy=={restore_version}",
-    #             "--quiet",
-    #         ]
-    #     )
     return all_results
 
 
@@ -235,6 +196,6 @@ if __name__ == "__main__":
     # For the Easy tier, use 'Easy-9'
     # For the Medium tier, use 'Medium-0'
     # For the Hard tier, use 'Hard-9'
-    dtaset = 'Easy-9'
+    dtaset = 'Hard-9'
     print(dtaset)
-    results = run_grid_search("PySR", dtaset)
+    results = run_grid_search("Gplearn", dtaset)

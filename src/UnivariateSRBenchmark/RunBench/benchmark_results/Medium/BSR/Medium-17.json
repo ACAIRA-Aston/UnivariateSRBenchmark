@@ -1,0 +1,84 @@
+{
+  "problem_id": "Medium-17",
+  "tier": "Medium",
+  "method": "BSR",
+  "original_equation": "1.20752229403757 + 5.07057979323449*tanh(0.8*x)**4/(tan(4.667*x + 1.275) - 3.187)",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 200,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "sqrt(asin(sqrt(cos(atanh(log(tan(sinh(log(X_0/sqrt(1 - X_0**2))))**2)**2 + asin(asinh(X_0**2)))))))",
+    "asin(X_0*atanh(asin(log(-(-X_0 + sqrt(Abs(X_0) - asinh(cos(tanh(cos(log(sinh(sqrt(acosh(X_0)) + acosh(asinh(Abs(atanh(X_0**3)))**3)))))))))**6))))",
+    "0",
+    "0",
+    "1",
+    "acosh(sin(Abs(sqrt(X_0) - log(tan(Abs(X_0**3))) + sin(cosh(sinh(sinh(log(X_0))) + asin(log(tanh(X_0))))))**3))",
+    "1/atan(sinh(log(X_0)**4))",
+    "0",
+    "log(cos(tan(sqrt(X_0**2*tan(cosh(X_0))))**3))",
+    "cos(X_0*asin(X_0))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      1.022200401658626,
+      1.022200401658626,
+      1.9681855873661462,
+      NaN,
+      NaN,
+      1.022200401658626,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      -0.0007140682795765407,
+      -0.0007140682795765407,
+      -0.9268149406579558,
+      NaN,
+      NaN,
+      -0.0007140682795765407,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      0.8001963981184115,
+      0.8001963981184115,
+      2.2863297242630676,
+      NaN,
+      NaN,
+      0.8001963981184115,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      -0.07971961579799247,
+      -0.07971961579799247,
+      -2.0849864574166097,
+      NaN,
+      NaN,
+      -0.07971961579799247,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.2586966980855059,
+    "inter_mse_std": 0.4096236012132262,
+    "inter_r2_mean": -0.23223928637417135,
+    "inter_r2_std": 0.4010134409733034,
+    "extra_mse_mean": 1.1717297296545754,
+    "extra_mse_std": 0.6435146069259683,
+    "extra_r2_mean": -0.5810363262026468,
+    "extra_r2_std": 0.8683060131041545
+  }
+}

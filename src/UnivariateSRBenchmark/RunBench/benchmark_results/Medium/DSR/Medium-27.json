@@ -1,0 +1,39 @@
+{
+  "problem_id": "Medium-27",
+  "tier": "Medium",
+  "method": "DSR",
+  "original_equation": "-2.63398503481285*acosh(-0.0102306093350384*(0.922*x**3 + 1.443*x**2 - 2.986*x)*sin(4.221*x + 4.221) + 11.0983707334009) + 8.04981088102519 + 0.612412237808149/x",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "tanh(sin(tanh(exp(-atan(X_0 - asinh(atanh(asinh(sinh(Abs(atan(atan(X_0))))))))))))/X_0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.22796848442277604
+    ],
+    "inter_r2": [
+      0.5084932624608136
+    ],
+    "extra_mse": [
+      5.7151144409329735
+    ],
+    "extra_r2": [
+      -0.0278591534871091
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.22796848442277604,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.5084932624608136,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 5.7151144409329735,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.0278591534871091,
+    "extra_r2_std": 0.0
+  }
+}

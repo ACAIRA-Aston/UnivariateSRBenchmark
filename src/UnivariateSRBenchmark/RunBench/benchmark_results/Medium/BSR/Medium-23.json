@@ -1,0 +1,84 @@
+{
+  "problem_id": "Medium-23",
+  "tier": "Medium",
+  "method": "BSR",
+  "original_equation": "-0.559360585120956*x/(-3.746*x**5 + 2.928*x**4 + 4.996*x**3 + x**2 + x - 4.682) - 0.494164229419398*Abs(2.936*asin(0.0999*x) + 4.699) + 2.32478038786814",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 200,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "0",
+    "0",
+    "atan(sinh(log(asinh(tanh(sin(cos(X_0**3)**3) + tanh(X_0))))) + acosh(X_0**3))**2",
+    "-acosh(-tan(tan(cosh(cos(sinh(exp(1/X_0)))) + 1/tan(exp(sin(Abs(asinh(cos(X_0*log(X_0))))**4)))))**3)",
+    "0",
+    "1/sqrt(log(X_0)**2*log(cos(X_0**3))**2 + 1)",
+    "0",
+    "exp((cosh(sin(exp(1/acosh(-atan(exp(sin(tan(X_0)) - 1/(2*X_0))/X_0)))))**2 + 1)**(-1/4))",
+    "log(sin(exp(2*exp(3*sin(X_0)))*tanh(sinh(cos(exp(-asin(exp(cos(cos(X_0))))))))**2))",
+    "0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.7318351733871562,
+      0.7318351733871562,
+      NaN,
+      NaN,
+      0.7318351733871562,
+      NaN,
+      0.7318351733871562,
+      NaN,
+      NaN,
+      0.7318351733871562
+    ],
+    "inter_r2": [
+      -1.2560269380124112e-07,
+      -1.2560269380124112e-07,
+      NaN,
+      NaN,
+      -1.2560269380124112e-07,
+      NaN,
+      -1.2560269380124112e-07,
+      NaN,
+      NaN,
+      -1.2560269380124112e-07
+    ],
+    "extra_mse": [
+      3.4134834521082786,
+      3.4134834521082786,
+      NaN,
+      NaN,
+      3.4134834521082786,
+      NaN,
+      3.4134834521082786,
+      NaN,
+      NaN,
+      3.4134834521082786
+    ],
+    "extra_r2": [
+      -2.1812254109576656e-06,
+      -2.1812254109576656e-06,
+      NaN,
+      NaN,
+      -2.1812254109576656e-06,
+      NaN,
+      -2.1812254109576656e-06,
+      NaN,
+      NaN,
+      -2.1812254109576656e-06
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.7318351733871562,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -1.2560269380124112e-07,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 3.4134834521082786,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -2.1812254109576656e-06,
+    "extra_r2_std": 0.0
+  }
+}

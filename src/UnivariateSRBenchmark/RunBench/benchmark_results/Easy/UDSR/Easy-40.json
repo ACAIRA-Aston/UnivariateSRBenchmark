@@ -1,0 +1,84 @@
+{
+  "problem_id": "Easy-40",
+  "tier": "Easy",
+  "method": "UDSR",
+  "original_equation": "3.07697579632472e-5*x**5 + 2.90298666837858e-5*x**4 - 1.68067649221918e-5*x**3 + 7.93916777098751e-6*x**2 + 2.90079352811035e-5*x + 1.98123847288182e-5*(0.753 - 2.482*x)*exp(x) + 0.408233062413748",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))",
+    "asinh(asinh(tanh(tanh(sin(X_0*atan(tanh(tanh(tanh(asin(tanh(atan(tanh(tanh(tanh(X_0)))))))))))))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187,
+      0.06845316418090187
+    ],
+    "inter_r2": [
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302,
+      0.4554720094076302
+    ],
+    "extra_mse": [
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696,
+      5.985969127250696
+    ],
+    "extra_r2": [
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166,
+      -2.0689921949440166
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.06845316418090187,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.4554720094076303,
+    "inter_r2_std": 5.551115123125783e-17,
+    "extra_mse_mean": 5.985969127250696,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -2.0689921949440166,
+    "extra_r2_std": 0.0
+  }
+}

@@ -11,7 +11,7 @@ Gplearn:
 
 Operon:
   population_size: [250, 500, 1000, 2000]
-  allowed_evaluations: [50000, 100000, 250000, 500000]
+  allowed_evaluations: [50000, 100000, 200000]
   crossover_probability: [0.6, 0.7, 0.8]
   mutation_probability: [0.1, 0.15, 0.2, 0.25]
   max_length: [15, 25, 50]
@@ -19,9 +19,8 @@ Operon:
 PySR:
   population_size: [30, 100, 250, 500]
   ncycles_per_iteration: [500, 1000, 2000]
-  maxsize: [20, 25, 30]
   maxdepth: [5, 10, 15]
-  parsimony: [0.0001, 0.001, 0.005, 0.01]
+  parsimony: [0.0001, 0.001, 0.01]
   niterations: [100, 200, 500]
 
 GPGOMEA:

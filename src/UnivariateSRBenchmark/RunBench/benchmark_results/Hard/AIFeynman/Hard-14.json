@@ -1,0 +1,38 @@
+{
+  "problem_id": "Hard-14",
+  "tier": "Hard",
+  "method": "AIFeynman",
+  "original_equation": "9.95191932459245e-6*(0.321 - 3.727*atan(4.586*x + 0.822))**(11/2)/(0.194*sin(x + 1.913) - 0.251) + 0.230597101037436",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 1000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "tan(cos(sin(cos(X_0) + 1.05529022216797) - 0.731428503990173*atan(X_0)) - 0.373013526201248)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.35891645050409515
+    ],
+    "inter_r2": [
+      0.6718611580084932
+    ],
+    "extra_mse": [
+      0.0824192597822225
+    ],
+    "extra_r2": [
+      0.40519050562620496
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.35891645050409515,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.6718611580084932,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.0824192597822225,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.40519050562620496,
+    "extra_r2_std": 0.0
+  }
+}

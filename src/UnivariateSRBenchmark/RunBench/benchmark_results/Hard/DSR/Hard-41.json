@@ -1,0 +1,39 @@
+{
+  "problem_id": "Hard-41",
+  "tier": "Hard",
+  "method": "DSR",
+  "original_equation": "0.0176190609882873*tan(4.181*x)**6*atan(x - 1.614) + 0.0574626203781703 - 0.00820191259252268/(-4.578*x**5 + x**4 + 2.345*x**3 + x**2 + 4.752*x)",
+  "config": {
+    "n_samples": 100000,
+    "lr": 0.0003,
+    "risk": 0.5
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "atan(X_0*exp(-E))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.9037316384660733
+    ],
+    "inter_r2": [
+      0.09184109451178246
+    ],
+    "extra_mse": [
+      1.0252180958596637
+    ],
+    "extra_r2": [
+      0.014857573224752008
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.9037316384660733,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.09184109451178246,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 1.0252180958596637,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.014857573224752008,
+    "extra_r2_std": 0.0
+  }
+}

@@ -95,17 +95,22 @@ class UCT(object):
         """
         Upper Confidence Bound of a chance node, weighted by prior probability
         """
+        # return mcts.chance_node_value(node)\
+        #     + self.ucb_constant * node.prob * sqrt(log(node.parent.visits)) / (len(node.sampled_returns))
         return mcts.chance_node_value(node)\
-            + self.ucb_constant * node.prob * sqrt(log(node.parent.visits)) / (len(node.sampled_returns))
+            + self.ucb_constant * sqrt(log(node.parent.visits)) / (len(node.sampled_returns))
             
     
     def var_p_ucb(self, node):
         """
         Upper Confidence Bound of a chance node, the ucb exploration weight is a variable
         """
+        # ucb_parameter = log((node.parent.visits + self.ucb_base + 1) / self.ucb_base) + self.ucb_constant
+        # return mcts.chance_node_value(node)\
+        #     + ucb_parameter * node.prob * sqrt(log(node.parent.visits)) / (len(node.sampled_returns))
         ucb_parameter = log((node.parent.visits + self.ucb_base + 1) / self.ucb_base) + self.ucb_constant
         return mcts.chance_node_value(node)\
-            + ucb_parameter * node.prob * sqrt(log(node.parent.visits)) / (len(node.sampled_returns)) 
+            + ucb_parameter * sqrt(log(node.parent.visits)) / (len(node.sampled_returns))
 
 
     def act(self, env, done):

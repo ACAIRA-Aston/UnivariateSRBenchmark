@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-21",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "0.00055234479013948 - 1.40279768164327*sin(1.231*x)",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "0.000552356243133545 - 1.40279769897461*sin(1.23099999293481*X_0)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      2.5773815087832103e-14
+    ],
+    "inter_r2": [
+      0.9999999999999739
+    ],
+    "extra_mse": [
+      1.0398759782175428e-13
+    ],
+    "extra_r2": [
+      0.999999999999907
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 2.5773815087832103e-14,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.9999999999999739,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 1.0398759782175428e-13,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.999999999999907,
+    "extra_r2_std": 0.0
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "problem_id": "Medium-36",
+  "tier": "Medium",
+  "method": "UDSR",
+  "original_equation": "-0.00585269759136383*Abs(3.379*x**2 - x + 4.776) + 0.696778286303354 + 0.031182509716079*cosh(0.028 + 0.961/x)/x",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))",
+    "(asinh(asinh(Abs(atan(exp(atan(atan(X_0))))))/sqrt(asinh(Abs(atan(exp(atan(atan(X_0))))))**2 + 1)) - asinh(Abs(X_0)))/(X_0*Abs(X_0))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434,
+      0.32180081605061434
+    ],
+    "inter_r2": [
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408,
+      0.6627709220201408
+    ],
+    "extra_mse": [
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112,
+      1.280165275012112
+    ],
+    "extra_r2": [
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287,
+      -85.16061045264287
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.32180081605061434,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.6627709220201407,
+    "inter_r2_std": 1.1102230246251565e-16,
+    "extra_mse_mean": 1.2801652750121122,
+    "extra_mse_std": 2.220446049250313e-16,
+    "extra_r2_mean": -85.16061045264289,
+    "extra_r2_std": 1.4210854715202004e-14
+  }
+}

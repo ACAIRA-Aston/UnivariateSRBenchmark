@@ -1,0 +1,38 @@
+{
+  "problem_id": "Medium-47",
+  "tier": "Medium",
+  "method": "AIFeynman",
+  "original_equation": "0.681922604708385*atanh(0.019553339412734*x**2 + 0.00424358188204749*x - 0.998769760093871) - 0.184832465422691 + 5.13181552012687*atanh(0.0999*x)/(x - 0.687)",
+  "config": {
+    "polyfit_deg": 2,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-tan(-sqrt(Abs(X_0)) + Abs(atan(X_0 - 1)) + 0.819115188519)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      3.4383107449247663
+    ],
+    "inter_r2": [
+      -3.5940358771986443
+    ],
+    "extra_mse": [
+      0.5576308224499805
+    ],
+    "extra_r2": [
+      -1.1448788702473203
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 3.4383107449247663,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -3.5940358771986443,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.5576308224499805,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -1.1448788702473203,
+    "extra_r2_std": 0.0
+  }
+}

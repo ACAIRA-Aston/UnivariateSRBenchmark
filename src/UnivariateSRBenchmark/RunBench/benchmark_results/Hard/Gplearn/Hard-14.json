@@ -1,0 +1,87 @@
+{
+  "problem_id": "Hard-14",
+  "tier": "Hard",
+  "method": "Gplearn",
+  "original_equation": "9.95191932459245e-6*(0.321 - 3.727*atan(4.586*x + 0.822))**(11/2)/(0.194*sin(x + 1.913) - 0.251) + 0.230597101037436",
+  "config": {
+    "population_size": 1000,
+    "generations": 500,
+    "tournament_size": 50,
+    "p_crossover": 0.6,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "atan(atan(atanh(0.167*X_0) + 0.242))",
+    "sin(log(cosh(X_0 + 0.455))/(atanh(tanh(X_0)) + 1.0e-5))**3",
+    "sin(0.292*X_0 + 0.292*asinh(-0.314*X_0 + 0.314*sin(X_0) + 0.314*tan(sin(X_0)) + 0.314*Abs(-0.314*X_0 + 0.314*sin(X_0) + 0.314*tan(sin(X_0)) + 0.314*Abs(atan(tan(X_0))) + 0.314*asin(X_0) + 0.314*asinh(1359.52152247213/(1.0e-5 + 0.003048625/(X_0 + 0.29201)**3))) + 0.314*asin(X_0) + 0.314*asinh(1359.52152247213/(1.0e-5 + 0.003048625/(X_0 + 0.29201)**3))))**3",
+    "sin(0.242*X_0 + 0.242*Abs(log(Abs(X_0))) + 0.242*asin(asin(atanh(tan(1.10390305915137*asinh(X_0))))))",
+    "tanh(tanh(tanh(atan(atan(X_0) + 0.318))))",
+    "atan(X_0 + 0.267) - atan(tanh(0.352*sinh(X_0)))",
+    "0",
+    "sin(0.265*X_0 + 0.265*log(Abs(cosh(exp(-sin(asinh(sin(Abs(X_0)) - acosh(sinh(exp(X_0))))))))))**3",
+    "atan(asinh(asin(asin(atan(asinh(asin(asin(0.169*X_0 + 0.169*sin(X_0) + 0.130637))))))))",
+    "0.387*asinh(asinh(asinh(sinh(X_0) + atanh(atanh(atanh(tan(asinh(X_0))))) + 0.991)))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      0.6029176274220875,
+      NaN,
+      NaN,
+      0.5271586055882437,
+      0.47893599845056956,
+      1.0939865318663766,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      0.4487834374805473,
+      NaN,
+      NaN,
+      0.5180460128237835,
+      0.5621334611470451,
+      -0.00017559300152991675,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      0.024779788807731105,
+      NaN,
+      0.29647883455880125,
+      0.045432560377355526,
+      0.1102842736952563,
+      0.15412120365924784,
+      NaN,
+      NaN,
+      0.12165814607225171
+    ],
+    "extra_r2": [
+      NaN,
+      0.8211673619690144,
+      NaN,
+      -1.1396506853182178,
+      0.67211889141486,
+      0.2040921837033305,
+      -0.11227345966302082,
+      NaN,
+      NaN,
+      0.12200836863985232
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.6757496908318192,
+    "inter_mse_std": 0.24547988959469244,
+    "inter_r2_mean": 0.3821968296124615,
+    "inter_r2_std": 0.2244296314383792,
+    "extra_mse_mean": 0.12545913452844062,
+    "extra_mse_std": 0.08836907372396896,
+    "extra_r2_mean": 0.0945771101243031,
+    "extra_r2_std": 0.6377485577876079
+  }
+}

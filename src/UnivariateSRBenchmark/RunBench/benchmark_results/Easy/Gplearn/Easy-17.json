@@ -1,0 +1,87 @@
+{
+  "problem_id": "Easy-17",
+  "tier": "Easy",
+  "method": "Gplearn",
+  "original_equation": "0.0321058246386714*(-2.259*x - 4.006)*log(10.2358423611924 - 1.833*tan(x + 2.718)) + 0.273778674491329 - 0.0789482227864929/(x**4 + 3.302*x**3 + 2.528*x**2 + x)",
+  "config": {
+    "population_size": 1000,
+    "generations": 200,
+    "tournament_size": 10,
+    "p_crossover": 0.7,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.0001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "-0.1672*X_0 - 0.0228*sin(0.598 + exp(-asin(tan(1.09123971908049*X_0 - 0.0665082198418968)))) - 0.0228*sin(tan(1.09123971908049*X_0 + 0.562916423322911)) - 0.0228*asin(tan(1.09123971908049*X_0 + 0.399393737183459))",
+    "-0.276*sin(asin(X_0) + atan(atan(asinh(tan(X_0) + atan(sqrt(Abs(cosh(0.276*asinh(X_0**3)*atan(atan(atanh(tan(sqrt(Abs(sin(asin(X_0) + atan(atan(asinh(tan(X_0) + atan(sqrt(cosh(0.276*atan(sqrt(Abs(cosh(sqrt(Abs(X_0 + sqrt(Abs(X_0)) - 2.26515993969638))*atan(atanh(tan(sqrt(Abs(X_0)))))/(exp(X_0) + 1.0e-5)))))/(exp(X_0) + 1.0e-5))))))/(cosh(tanh(sqrt(Abs(X_0)) + atan(tan(X_0)))) + 1.0e-5)))*asinh(sqrt(Abs(X_0)))**3 + atan(atanh(tan(sqrt(Abs(X_0)))))))))))/(exp(X_0) + 1.0e-5)))))))/(cosh(tanh(sqrt(Abs(X_0)) + atan(atanh(tan(sqrt(Abs(X_0))))))) + 1.0e-5)))*asinh(sqrt(Abs(X_0)))**3",
+    "0",
+    "-0.166*X_0",
+    "-0.167*X_0 + 0.027889*log(Abs(tan(1.081663*X_0 + 0.081663*log(0.325674*Abs(tanh(sinh(0.325674/(X_0 + log(0.723067697787698/Abs(X_0 - 0.167*log(Abs(0.167*X_0 + 0.167*log(Abs(atanh(log(Abs(tan(X_0)))))))) + 1.0e-5)) + 1.0e-5)))/(atanh(log(Abs(tan(X_0)))) + 1.0e-5)))))) - 0.054387558/(atanh(X_0 + 0.138) + 1.0e-5)",
+    "-0.166075516910046*X_0",
+    "-asinh(0.221*X_0/(sinh(sqrt(sinh(sqrt(Abs(sin(acosh(-0.776*X_0 - tanh(asin(sqrt(Abs(X_0)))**3 - asinh(X_0**3*tan(X_0) - X_0**3*tanh(sqrt(Abs(tanh(tanh(X_0*tan(X_0))))))**3))))))))) + 1.0e-5))",
+    "-tan(sin(0.151*X_0 + 0.0209806359120673 - 0.036391*sin(2*X_0 - 0.717752420107151)/(asin(X_0) + 1.0e-5) + 0.0659923556179047/(X_0 + 0.08401) - 0.022801*sin(2*X_0)/(X_0 + 1.0e-5)))",
+    "-0.164544962789877*X_0 - 0.105473321148311/(X_0 + 1.0e-5)",
+    "0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      0.8014805464770549,
+      0.04252839329697916,
+      NaN,
+      0.04253906483393719,
+      NaN,
+      NaN,
+      0.03878852635363127,
+      0.8014805464770549
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      -2.8341709263912662e-06,
+      0.946937559474586,
+      NaN,
+      0.94692424465709,
+      NaN,
+      NaN,
+      0.9516037707247641,
+      -2.8341709263912662e-06
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      2.7866750836006977,
+      0.00810296862760853,
+      NaN,
+      0.007987278808041901,
+      NaN,
+      NaN,
+      0.008575196867932266,
+      2.7866750836006977
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      -6.603058670662243e-05,
+      0.9970920529203173,
+      NaN,
+      0.9971335710216971,
+      NaN,
+      NaN,
+      0.9969225823478022,
+      -6.603058670662243e-05
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.3453634154877315,
+    "inter_mse_std": 0.3724205888577093,
+    "inter_r2_mean": 0.5690919813029175,
+    "inter_r2_std": 0.46466710389704563,
+    "extra_mse_mean": 1.1196031223009957,
+    "extra_mse_std": 1.3611585708150158,
+    "extra_r2_mean": 0.5982032290232807,
+    "extra_r2_std": 0.4884848100608706
+  }
+}

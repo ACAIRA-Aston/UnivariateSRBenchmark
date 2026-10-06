@@ -1,0 +1,87 @@
+{
+  "problem_id": "Hard-6",
+  "tier": "Hard",
+  "method": "Gplearn",
+  "original_equation": "0.270342799381445*(-1.281*atan(0.79*x - 4.295) - 3.98)**4*asin(0.00162761522053689 + 0.373743377854917/(-4.35*x - 2.69)) + 0.435005359741825",
+  "config": {
+    "population_size": 1000,
+    "generations": 500,
+    "tournament_size": 50,
+    "p_crossover": 0.6,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "sin(atanh(0.553337170267822*(-tanh(asin(sqrt(Abs(X_0))))*atan(tanh(Abs(log(Abs(X_0))) - asin(X_0))) - 0.740582816443826)**3))",
+    "log(sqrt(Abs(asin(tan(acosh(X_0 + tan(sin(Abs(X_0 + sin(sqrt(acosh((X_0 + 0.848)**3)**2 + 5))))))))))) - sin(0.12*X_0 - log(sqrt(Abs(asin(X_0)))))",
+    "(-exp(atan(X_0)) + atan(X_0) + 2.02384668492235)*sinh(sinh(Abs(-1.72113870370281*exp(atan(X_0)) + 1.72113870370281*atan(X_0) + 3.4937865129904)**(1/4)))*atan(asinh(atanh(atan(acosh(X_0) - asin(atanh(X_0)))**9*atan(acosh(X_0))**9)))",
+    "sin(sqrt(asinh(2*X_0 - asinh(sqrt(Abs(X_0 - acosh(atan(tan(X_0)))))))**2 + 1) + asinh(acosh(tan(sin(acosh(tan(acosh(asinh(acosh(sqrt(Abs(X_0 - 0.695)))))))))))/(sinh(tanh((X_0 - 0.223)**9 - 0.294)) + 1.0e-5))",
+    "tanh(tanh(sin(0.216*X_0 + tan(exp(asin(atan(1/sqrt(1 - X_0**2))))))))",
+    "-0.15*X_0/((acosh(sin(0.496654598009198*X_0) + 1.23443201181064) + 1.0e-5)*(acosh(sin(5.31886601776501*asinh(0.15*X_0)) + 1.17177518511895) + 1.0e-5))",
+    "sin(acosh(exp(X_0/2) + sin(acosh(0.421894498397364*exp(X_0))) + 2*sin(acosh(exp(X_0))) + asin(X_0 + 1.54177926396029) + atanh(3.62305713561103*X_0) - 0.544 + Abs(log(Abs(sin(tanh(X_0 - 0.495) - asinh(log(Abs(X_0)))))))**(3/2)/(X_0 + 1.0e-5)**3))",
+    "asin(sinh(0.373*(-X_0/(cosh(X_0 - 0.779) + 1.0e-5) + Abs(tanh(X_0 - exp(atan(X_0)))))/(1.0e-5 - tanh(tanh(X_0 + 0.692)))))",
+    "-tanh((X_0/(atanh(asinh(asinh(asinh(atanh(asinh(asinh(asinh((X_0 + 0.683)*tanh(tanh(X_0)))))))))) + 1.0e-5) - 0.556)**3 - 0.721) - 0.459",
+    "Abs(sin(sin((0.578*X_0 - exp(sin((0.553*X_0 - cosh(sin((1.0770188341904 - 0.536*X_0)/(tanh(acosh(X_0)/(0.525*X_0 + 1.0e-5)) + 1.0e-5))))/(tanh(sqrt(Abs(X_0))/(0.525*X_0 + 1.0e-5)) - 1.0e-5))))/(cosh(asin(atanh(X_0))) + 1.0e-5))))/(1.0e-5 - atan(X_0 + 0.603))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      0.3732236308802454,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      0.5808440932341203,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": NaN,
+    "inter_mse_std": NaN,
+    "inter_r2_mean": NaN,
+    "inter_r2_std": NaN,
+    "extra_mse_mean": 0.3732236308802454,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.5808440932341203,
+    "extra_r2_std": 0.0
+  }
+}

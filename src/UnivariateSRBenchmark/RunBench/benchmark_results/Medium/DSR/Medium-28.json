@@ -1,0 +1,39 @@
+{
+  "problem_id": "Medium-28",
+  "tier": "Medium",
+  "method": "DSR",
+  "original_equation": "0.172232998670165 - 3.58041334437744/(x - acosh(0.858973278260137*x + 9.69073278260137)*asinh(2.257*x**3 - 2.192*x**2 + 1.414*x - 0.891))",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "atan(1/(X_0 - 1))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.23700484329843616
+    ],
+    "inter_r2": [
+      0.6115885119166884
+    ],
+    "extra_mse": [
+      4.484432029149153
+    ],
+    "extra_r2": [
+      -0.0148485379326464
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.23700484329843616,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.6115885119166884,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 4.484432029149153,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.0148485379326464,
+    "extra_r2_std": 0.0
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "problem_id": "Hard-21",
+  "tier": "Hard",
+  "method": "AIFeynman",
+  "original_equation": "-0.160994137386384*x - 1.05731543036339*log(9.61832671305162 + 2.23/(x**4 + x**3 - 2.676*x**2 - 2.549*x))*acosh(2.52580270247016 + 0.373/(1.053 - 2.15*x)) + 3.74404458044961",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 1000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "acos((cos(log(Abs(X_0))) + 3.01492619514465)**(-0.76300185918808) + 0.382636040449142)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      1.2299508334108913
+    ],
+    "inter_r2": [
+      -0.43711634421097245
+    ],
+    "extra_mse": [
+      2.533779787508025
+    ],
+    "extra_r2": [
+      -0.10343636604952322
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.2299508334108913,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.43711634421097245,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.533779787508025,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.10343636604952322,
+    "extra_r2_std": 0.0
+  }
+}

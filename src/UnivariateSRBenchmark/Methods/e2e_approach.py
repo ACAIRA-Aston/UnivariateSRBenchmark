@@ -11,6 +11,7 @@ from SRToolkit.approaches.sr_approach import SR_approach, ApproachConfig
 from SRToolkit.evaluation import SR_evaluator
 from UnivariateSRBenchmark.utils import *
 from UnivariateSRBenchmark.Methods.E2E.model.sklearn_wrapper import SymbolicTransformerRegressor
+from UnivariateSRBenchmark.Methods.TPSR.symbolicregression.model.model_wrapper import ModelWrapper
 from SRToolkit.utils.types import ModelResult
 
 import warnings
@@ -34,22 +35,22 @@ pathlib.PosixPath = pathlib.WindowsPath  # This deals with PosixPath errors when
 class E2EConfig(ApproachConfig):
     name: str = "E2E"
     B: int = 50
-    # C: int = 1
+    C: int = 1
     K: float = 1
 
 
 class E2EApproach(SR_approach):
     def __init__(self, B: int = 50,
-                       # C: int = 1,
+                       C: int = 1,
                        K: float = 1):
         self.cfg = E2EConfig(B=B,
-                             # C=C,
+                             C=C,
                              K=K)
         super().__init__(self.cfg)
         self.sympy = []
         self.errors = []
 
-        model_path = Path(os.path.join(get_project_root(), "UnivariateSRBenchmark\\Methods\\E2E\\model.pt"))
+        model_path = get_project_root() / "UnivariateSRBenchmark" / "Methods" / "E2E" / "model.pt"  # Path(os.path.join(get_project_root(), "UnivariateSRBenchmark\\Methods\\E2E\\model.pt"))
         self.model = torch.load(model_path, map_location=torch.device('cuda'), weights_only=False)
         print("Model successfully loaded on", self.model.device)
 
@@ -58,10 +59,20 @@ class E2EApproach(SR_approach):
         pass
 
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        X = sr_evaluator.X
-        y = sr_evaluator.y
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
 
-        model = SymbolicTransformerRegressor(model=self.model,
+        env = self.model.env
+        env.params.max_len = 50
+        mw = ModelWrapper(
+            env=env,
+            embedder=self.model.embedder,
+            encoder=self.model.encoder,
+            decoder=self.model.decoder,
+            beam_size=self.cfg.C)
+        model = SymbolicTransformerRegressor(model=mw,
                                              max_input_points=len(X)//self.cfg.B,
                                              n_trees_to_refine=self.cfg.K,
                                              rescale=True
@@ -107,6 +118,6 @@ class E2EApproach(SR_approach):
     @classmethod
     def from_config(self, config: dict) -> "E2EApproach":
         return self(B=config.get("B", 50),
-                    # C=config.get("C", 1),
+                    C=config.get("C", 1),
                     K=config.get("K", 1),
         )

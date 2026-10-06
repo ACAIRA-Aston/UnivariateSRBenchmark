@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-45",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "0.078869008818735*(x + 1.978)*log(x + 10.0973432781484) - 0.689435709552882",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "tan(atan(0.41136602105967*exp(X_0)**0.444459944963455) - 0.711134672164917)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.06959373939157783
+    ],
+    "inter_r2": [
+      0.9198588219648721
+    ],
+    "extra_mse": [
+      0.6465032649799575
+    ],
+    "extra_r2": [
+      0.5300271165639794
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.06959373939157783,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.9198588219648721,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.6465032649799575,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.5300271165639794,
+    "extra_r2_std": 0.0
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "problem_id": "Easy-2",
+  "tier": "Easy",
+  "method": "Gplearn",
+  "original_equation": "0.127360580388133*asinh(x) - 0.0496785230092481 + 0.0506223944159201*cosh(0.077010330468411*x**2 + 0.0304509017273274*x - 0.00554206411437359)/(1.35*x + 1.631)",
+  "config": {
+    "population_size": 1000,
+    "generations": 200,
+    "tournament_size": 10,
+    "p_crossover": 0.7,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.0001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "0",
+    "0.055*acosh(cosh(X_0 - 0.66)/((acosh(1.02761860629321*sqrt(0.944 - X_0)*sqrt(-0.946969696969697*X_0 - 1)/(-X_0 - 0.056) + sin(log(Abs(asinh(X_0 - 0.266))) - acosh(cosh(X_0 + 0.056) + acosh(-sin(X_0 - atanh(cosh(asin(log(Abs(asinh(X_0 - 0.266))))))))))) + 1.0e-5)*(-tanh(sin(X_0 - 1.466)) + acosh(sin(asinh(X_0 - sin(asinh(X_0))))) + 1.0e-5)))*atan(X_0)",
+    "atan(tanh(tanh(cosh(tanh(X_0 + 0.903)/((1.0e-5 - 0.025*X_0)*(sinh(X_0) + 1.0e-5)))))*atanh(atan(acosh(cosh(atan(log(cosh(X_0**2)))/((exp(sinh(X_0)) + 1.0e-5)*(atanh(X_0*(-0.025*X_0 - 0.022575)) + 1.0e-5)))))*atanh(0.0907500503958844*X_0)))",
+    "0",
+    "atanh(atanh(tan(tan(tan(tan(0.052*X_0))))))",
+    "tan(tan(sinh(tan(tan(atanh(0.055742968*X_0)))))) + 0.0640437713941938*asinh(tan(asinh(tan(tan(sinh(tan((X_0 + asinh(exp(X_0)))**3/sqrt(1 - (X_0 + asinh(exp(X_0)))**6))/sqrt(1 - tan((X_0 + asinh(exp(X_0)))**3/sqrt(1 - (X_0 + asinh(exp(X_0)))**6))**2))) - atanh(atanh(atanh((X_0 + asinh(atanh(tan(tan(atanh(0.055742968*X_0))**3))))*Abs(asin(tan(tan(0.0640437713941938*X_0))))**3)))) - 0.454650849466475)/sqrt(1 - asinh(tan(tan(sinh(tan((X_0 + asinh(exp(X_0)))**3/sqrt(1 - (X_0 + asinh(exp(X_0)))**6))/sqrt(1 - tan((X_0 + asinh(exp(X_0)))**3/sqrt(1 - (X_0 + asinh(exp(X_0)))**6))**2))) - atanh(atanh(atanh((X_0 + asinh(atanh(tan(tan(atanh(0.055742968*X_0))**3))))*Abs(asin(tan(tan(0.0640437713941938*X_0))))**3)))) - 0.454650849466475)**2)) - atanh((2*X_0 + asinh(exp(X_0)))*Abs(asin(atanh(0.055742968*X_0)))**3))",
+    "asin(asin(asin(asin(0.096839*X_0))/(sqrt(log(Abs(atan(X_0))) - 1)*sqrt(log(Abs(atan(X_0))) + 1)/log(Abs(atan(X_0))) + 1.0e-5)))/(acosh(asinh(sqrt(Abs(tanh((tanh(sin(asinh(X_0) + 1.10578209093251)) + asinh(X_0))*asin(asin(0.096839*X_0))/(tanh(atan(log(Abs(atan(X_0))))) + 1.0e-5)))))) + 1.0e-5)",
+    "0",
+    "atanh(tanh(exp(0.015*exp(exp(3*tanh(exp(exp(3*tanh(exp(0.746*atanh(0.089*exp(tanh(Abs(X_0)))))))/(0.248*exp(X_0) + 1.0e-5))))/(0.248*exp(X_0) + 1.0e-5))))*atanh(0.746*atanh(0.089*X_0)))",
+    "asinh(atan(atanh(atanh(atan(asinh(atan(atanh(atan(atanh(atan(atanh(atan(asin(atan(atanh(atan(asin(atan(atanh(asin(atanh(atan(atan(atanh(atan(atanh(atanh(atan(atanh(atan(atanh(atan(atan(atanh(atanh(atan(asinh(asin(atan(atanh(atan(atan(atanh(atan(atanh(atan(asin(atan(atanh(atanh(0.075*X_0)))))))))))))))))))))))))))))))))))))))))))))))))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.2156196568216836,
+      NaN,
+      NaN,
+      0.2156196568216836,
+      0.007158442056954518,
+      NaN,
+      NaN,
+      0.2156196568216836,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      -0.006223512824759636,
+      NaN,
+      NaN,
+      -0.006223512824759636,
+      0.9665939886043965,
+      NaN,
+      NaN,
+      -0.006223512824759636,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      8.059423097941686,
+      NaN,
+      NaN,
+      8.059423097941686,
+      NaN,
+      NaN,
+      NaN,
+      8.059423097941686,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      -0.01358535096027369,
+      NaN,
+      NaN,
+      -0.01358535096027369,
+      NaN,
+      NaN,
+      NaN,
+      -0.01358535096027369,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.16350435313050132,
+    "inter_mse_std": 0.09026635384500956,
+    "inter_r2_mean": 0.2369808625325294,
+    "inter_r2_std": 0.42124233474187683,
+    "extra_mse_mean": 8.059423097941686,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.01358535096027369,
+    "extra_r2_std": 0.0
+  }
+}

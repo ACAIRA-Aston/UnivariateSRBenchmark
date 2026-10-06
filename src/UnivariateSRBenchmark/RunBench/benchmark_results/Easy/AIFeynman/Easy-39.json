@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-39",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "0.289124971717545 + 0.0459085847853569*cosh(0.799688028077473*x - 0.00311971922526973)/(-2.53*x + 2.045*log(2.822*x**2 - x + 0.189589474040853) - 0.096)",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-asin(atan(X_0/pi - pi) + 1.005030536676)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.09130918563163687
+    ],
+    "inter_r2": [
+      0.7101563501759991
+    ],
+    "extra_mse": [
+      NaN
+    ],
+    "extra_r2": [
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.09130918563163687,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.7101563501759991,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": NaN,
+    "extra_mse_std": NaN,
+    "extra_r2_mean": NaN,
+    "extra_r2_std": NaN
+  }
+}

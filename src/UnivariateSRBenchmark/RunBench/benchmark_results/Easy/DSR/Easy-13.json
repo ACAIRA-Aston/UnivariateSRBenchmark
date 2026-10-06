@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-13",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.00178668372062328*x + 0.00148026820267049*(x**2 + 2.437*x - 2.201)*Abs(2.526*x - 4.411) - 0.801570237833741",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "sin(log((-X_0 + sinh(X_0))/X_0**3))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.04760717537562351
+    ],
+    "inter_r2": [
+      0.9070792948617323
+    ],
+    "extra_mse": [
+      1.912763649656098
+    ],
+    "extra_r2": [
+      -10.56433949668105
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.04760717537562351,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.9070792948617323,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 1.912763649656098,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -10.56433949668105,
+    "extra_r2_std": 0.0
+  }
+}

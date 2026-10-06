@@ -1,0 +1,84 @@
+{
+  "problem_id": "Easy-21",
+  "tier": "Easy",
+  "method": "BSR",
+  "original_equation": "0.00055234479013948 - 1.40279768164327*sin(1.231*x)",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 50,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "-tan(sinh(X_0**2))",
+    "0",
+    "X_0*Abs(sqrt(atanh(atan(cos(sqrt(X_0))))))",
+    "0",
+    "sqrt(asin(X_0))",
+    "asinh(tan(log(X_0)))",
+    "tan(log(1/Abs(acosh(Abs(X_0**2 - exp(sinh(cos(X_0**2 - X_0))))))))",
+    "atanh(X_0**2)",
+    "Abs(acosh(atan(Abs(asinh(atan(X_0))))))**3",
+    "0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      842.4618223341281,
+      0.9869621345953702,
+      NaN,
+      0.9869621345953702,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      0.9869621345953702
+    ],
+    "inter_r2": [
+      -852.5909073285621,
+      -9.689942781498928e-08,
+      NaN,
+      -9.689942781498928e-08,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      -9.689942781498928e-08
+    ],
+    "extra_mse": [
+      7724.271312558757,
+      1.1173407985332307,
+      NaN,
+      1.1173407985332307,
+      NaN,
+      NaN,
+      200.39386416895974,
+      NaN,
+      NaN,
+      1.1173407985332307
+    ],
+    "extra_r2": [
+      -6912.132390274631,
+      -6.933049665480695e-06,
+      NaN,
+      -6.933049665480695e-06,
+      NaN,
+      NaN,
+      -178.35016225366334,
+      NaN,
+      NaN,
+      -6.933049665480695e-06
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 211.35567718447857,
+    "inter_mse_std": 364.36930278937723,
+    "inter_r2_mean": -213.14772690481507,
+    "inter_r2_std": 369.18269234912077,
+    "extra_mse_mean": 1585.6034398246634,
+    "extra_mse_std": 3070.304135236349,
+    "extra_r2_mean": -1418.0965146654887,
+    "extra_r2_std": 2747.886254433671
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "problem_id": "Easy-36",
+  "tier": "Easy",
+  "method": "Gplearn",
+  "original_equation": "0.637549615043527*sqrt(11.430597545399 - 1.1320597545399*x)/((-1.955*x - 1.255)*cosh(0.00628896208541983*x**3 - 0.0153262006021681*x**2 + 0.0178417854363361*x)) - 0.00214719190176265",
+  "config": {
+    "population_size": 1000,
+    "generations": 200,
+    "tournament_size": 10,
+    "p_crossover": 0.7,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.0001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "acosh(-1.00105818657383*(526.701474764129 - 11450.0320600898*acosh(11450.0320600898*sin(X_0**3)*asinh(asinh(21.7438573602957*sin(0.399*X_0)/(X_0**3 + 1.0e-5)))))*asinh(asinh(21.7438573602957*sin(0.399*X_0)/(X_0**3 + 1.0e-5))))/(-1.86572018107635*asinh(X_0) - 1.12315354900796)",
+    "0",
+    "atan(tanh(asin(asin(0.408591001122634*atan(exp(exp(Abs(X_0)/2)/2)/(-0.229924399072082*X_0 - 0.131506756269231)) - 0.0111163968617922))/(1.0e-5 - 0.806*X_0))/(-sinh(X_0)*atan(sinh(0.227925314582793/(acosh(-(X_0 - 0.229924399072082)*sinh(X_0)*atan(0.234109644628532/(acosh(2*X_0 - 0.489) + 1.0e-5)) - tanh(sinh((-X_0 + (X_0 - 0.229924399072082)*asin(X_0 - 0.223179695641239) + 0.229924399072082)/(acosh(-(X_0 - 0.287)*(2*X_0 - 0.489) + tan(sqrt(Abs(X_0))) + 0.686120254036562) + 1.0e-5)))*asin(asin((X_0 - 0.489)/(acosh(-(X_0 - 0.287)*(2*X_0 - 0.489) + tan(sqrt(Abs(X_0))) + 0.686120254036562) + 1.0e-5)))) + 1.0e-5))/(acosh(-X_0 + (X_0 - 0.489)*atan(X_0) + 0.489) + 1.0e-5)) + 1.0e-5))",
+    "-acosh(sqrt(Abs(sin(tanh(tanh(11.8922792370349*tan(sqrt(Abs(X_0)))/(sinh(X_0) + 1.0e-5))/(X_0 + cosh(cosh(sin(exp(-2.238*X_0)/(cosh(cosh(sqrt(Abs(sin(asinh(sqrt(Abs(acosh(sqrt(Abs(sin(X_0**3)))))))))))) + 1.0e-5)))) + 1.0e-5))/sqrt(tanh(tanh(11.8922792370349*tan(sqrt(Abs(X_0)))/(sinh(X_0) + 1.0e-5))/(X_0 + cosh(cosh(sin(exp(-2.238*X_0)/(cosh(cosh(sqrt(Abs(sin(asinh(sqrt(Abs(acosh(sqrt(Abs(sin(X_0**3)))))))))))) + 1.0e-5)))) + 1.0e-5))**2 + 1)))))/(X_0 + 0.634832809924155)",
+    "0",
+    "-1.60626472192438*sin(0.0921298362678633*tanh((asin(sin(X_0/sqrt(X_0**2 + 1)) + Abs(X_0)) - 1.98628377938582)*asinh(atan(X_0)**3 - 0.672))**3 - 0.0921298362678633*sin(X_0)/(tanh(X_0)**9 + Abs(X_0) + 1.0e-5)) - 1.60626472192438*asinh(X_0)/((X_0**3/(X_0**2 + 1)**(3/2) + Abs(X_0) + 1.0e-5)*(X_0**3/((X_0**2 + 1)**(3/2)*((sin(tanh(atan(X_0))*atan(X_0)**3)**3*tanh(atan(X_0))**3 - 0.34997485532979)**3*tanh((Abs(X_0) - 0.34997485532979)*atan(X_0)/(Abs(X_0) + 1.0e-5) + atanh(2*X_0))**3*atan(X_0)**3 + Abs(X_0) + 1.0e-5)**3) + Abs(X_0) + 1.0e-5))",
+    "-exp(tanh(0.246/(cosh(X_0 + cosh(asin(tanh(X_0)))) + 1.0e-5))/(acosh(0.246 + exp(-0.475466495132816/((X_0 + 0.67401)*sqrt(Abs(X_0 + tanh(cosh(tanh(cosh(tanh(log(Abs(tan(X_0)))))))) + 1.0e-5))))) + 1.0e-5))/(X_0 + 0.67401)",
+    "acosh(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(sinh(sqrt(-1 + sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(-X_0 + 1.0e-5 + Abs(atanh(sinh(sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) - 1)*sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) + 1))))/(log(Abs(X_0)) + 1.0e-5))) - 1)*sqrt(acosh(acosh(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(-X_0 + 1.0e-5 + Abs(atanh(sinh(sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) - 1)*sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) + 1))))/(log(Abs(X_0)) + 1.0e-5))) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5))*sqrt(1 + sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(-X_0 + 1.0e-5 + Abs(atanh(sinh(sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) - 1)*sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) + 1))))/(log(Abs(X_0)) + 1.0e-5))) - 1)*sqrt(acosh(acosh(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(-X_0 + 1.0e-5 + Abs(atanh(sinh(sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) - 1)*sqrt(acosh(acosh(-atan(X_0/(sinh(X_0) + 1.0e-5)))/(-X_0 + Abs(atan(X_0/(acosh(sin(tanh(Abs((acosh(0.336109830226995/(Abs(atanh(sinh(sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) - 1)*sqrt(acosh(acosh(X_0/(sinh(X_0) + 1.0e-5))/(-X_0 + sin(sqrt(-1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*sqrt(1 + acosh(X_0/(atanh(X_0) + 1.0e-5))/(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5))*(-X_0 + sin(atan(sin(sin(X_0/(sinh(X_0) + 1.0e-5))))/(acosh(X_0 - 0.772) + 1.0e-5)) + 1.0e-5)/acosh(X_0/(atanh(X_0) + 1.0e-5))) + 1.0e-5)) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5)) + 1.0e-5))**3) + 1.0e-5)) + 1))))/(log(Abs(X_0)) + 1.0e-5))) + 1)))) + 1.0e-5)) + atan(X_0/(sinh(X_0) + 1.0e-5)))**3)))/(Abs(atanh(atan(acosh(X_0 - 0.772)))) + 1.0e-5))) + 1.0e-5))/(-X_0 - 0.63199)",
+    "asinh(asinh(tan(atanh(tan(cosh(asin(acosh(acosh(tan(atanh(tan(cosh(asin(acosh(acosh(asinh(tan(atanh(tan(cosh(asin(acosh(acosh(tan(atanh(tan(cosh(asin(acosh(acosh(0.769/(X_0 + tanh(X_0 + sqrt(Abs(X_0))) + 1.0e-5))))))))/(X_0 + atan(X_0) + 1.0e-5)))))))))/(X_0 + tanh(X_0 + asin((2.07518391317431*tanh(X_0) - atan(X_0 - 0.171))/(asin(asin(X_0**2)) + 1.0e-5))) + 1.0e-5))))))))/(asin(X_0) + atanh(X_0) + 1.0e-5)))))))))/(X_0 + sin(sqrt(Abs(X_0))) + 1.0e-5))",
+    "-tanh(asin(asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))/sqrt(1 - asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))**2))/(sqrt(1 - asin(asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))/sqrt(1 - asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))**2))**2/(1 - asin(asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))/sqrt(1 - asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))**2))**2))*sqrt(1 - asin(asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))/sqrt(1 - asin(tan(sin(sin(acosh(acosh(-tan(tanh(tan(sin(exp(-atanh(tan(sin(sin(acosh(acosh(acosh(sin(sin(acosh(-0.876545662980957/(X_0 + 1.0e-5)))))))))/(X_0 + 1.0e-5)))))))) + cosh(X_0)))))/(X_0 + 1.0e-5)))**2))**2)))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      1.1111103917444682,
+      NaN,
+      NaN,
+      1.1111103917444682,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      -6.487705261903898e-08,
+      NaN,
+      NaN,
+      -6.487705261903898e-08,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      6.4614386846413935e-06,
+      NaN,
+      NaN,
+      6.4614386846413935e-06,
+      NaN,
+      0.011173835413225596,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      -9.379619523549513,
+      NaN,
+      NaN,
+      -9.379619523549513,
+      NaN,
+      -17948.587679865475,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.1111103917444682,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -6.487705261903898e-08,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.003728919430198293,
+    "extra_mse_std": 0.005264350576962717,
+    "extra_r2_mean": -5989.115639637524,
+    "extra_r2_std": 8456.623779056099
+  }
+}

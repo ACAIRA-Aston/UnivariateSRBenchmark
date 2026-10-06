@@ -192,6 +192,7 @@ class ChanceNode:
         self.depth = parent.depth
         self.children = []
         self.sampled_returns = []
+        self.prob = 1.0 / len(parent._possible_actions)
 
 class MCTS(object):
     """

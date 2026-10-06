@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-32",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "6.80897660486527e-5*(4.812*x + 2.419)*sinh(0.800085441706824*x) - 4.95693496834192e-5*sqrt(-0.000767848172232577*x**4 + 0.00419589165154414*x**3 + 0.0193178851637092*x**2 + 0.00731763504029297*x + 10.1184589175695) - 0.520858619139799",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "asinh(atan(atan(X_0*(-X_0 - asinh(X_0 - sinh(X_0))))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.10699543114591496
+    ],
+    "inter_r2": [
+      0.3666151059675026
+    ],
+    "extra_mse": [
+      7.775855991017725
+    ],
+    "extra_r2": [
+      -9.390276845329439
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.10699543114591496,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.3666151059675026,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 7.775855991017725,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -9.390276845329439,
+    "extra_r2_std": 0.0
+  }
+}

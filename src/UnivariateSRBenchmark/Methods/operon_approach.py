@@ -47,8 +47,12 @@ class OperonApproach(SR_approach):
         pass
 
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        X = np.ascontiguousarray(sr_evaluator.X, dtype=np.float32)
-        y = np.ascontiguousarray(sr_evaluator.y, dtype=np.float32).ravel()
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
+        X = np.ascontiguousarray(X, dtype=np.float32)
+        y = np.ascontiguousarray(y, dtype=np.float32).ravel()
 
         model = SymbolicRegressor(
             allowed_symbols=self.allowed_symbols,

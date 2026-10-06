@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-4",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.0353592625556658*(x + 3.574)*log(2.49*x**2 - 2.06*x + 0.45) - 0.417499705929502",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-X_0*tanh(X_0)/atan(asinh(X_0)) + X_0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.057831847054720026
+    ],
+    "inter_r2": [
+      0.9222698690671145
+    ],
+    "extra_mse": [
+      0.05869945612953705
+    ],
+    "extra_r2": [
+      0.9818828738311178
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.057831847054720026,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.9222698690671145,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.05869945612953705,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.9818828738311178,
+    "extra_r2_std": 0.0
+  }
+}

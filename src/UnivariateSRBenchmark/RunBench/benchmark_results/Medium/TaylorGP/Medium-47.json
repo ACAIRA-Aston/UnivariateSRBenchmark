@@ -1,0 +1,85 @@
+{
+  "problem_id": "Medium-47",
+  "tier": "Medium",
+  "method": "TaylorGP",
+  "original_equation": "0.681922604708385*atanh(0.019553339412734*x**2 + 0.00424358188204749*x - 0.998769760093871) - 0.184832465422691 + 5.13181552012687*atanh(0.0999*x)/(x - 0.687)",
+  "config": {
+    "population_size": 200,
+    "generations": 500,
+    "crossover_rate": 0.8,
+    "mutation_rate": 0.05
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1",
+    "0.675*log(X_0) - 1"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": NaN,
+    "inter_mse_std": NaN,
+    "inter_r2_mean": NaN,
+    "inter_r2_std": NaN,
+    "extra_mse_mean": NaN,
+    "extra_mse_std": NaN,
+    "extra_r2_mean": NaN,
+    "extra_r2_std": NaN
+  }
+}

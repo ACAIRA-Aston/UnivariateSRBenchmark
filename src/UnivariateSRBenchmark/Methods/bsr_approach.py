@@ -38,8 +38,10 @@ class BSRApproach(SR_approach):
         pass
 
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        X = sr_evaluator.X
-        y = sr_evaluator.y
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
 
         model = BSRRegressor(itr_num = self.cfg.iter_num, beta = self.cfg.beta,
                              tree_num=self.cfg.tree_num)
@@ -67,14 +69,37 @@ class BSRApproach(SR_approach):
                     sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
                     self.errors.append(err)
                     self.sympy.append(expr)
-                except ValueError:
-                    print("Iteration omitted")
-                    tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
-                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
-                    self.errors.append(1000)
-                    self.sympy.append(sp.sympify('0'))
-        except Exception:
+                except Exception as A:
+                    print(A)
+                    program = (model._model()[1]).replace('x[0]', 'X_0')
+                    program = program.replace('[', '(').replace(']', ')')
+                    if not sr_evaluator.should_stop:
+                        expr = sp.sympify(program)
+
+                        if 'X_0' not in str(expr.free_symbols):
+                            if expr.is_real:
+                                values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                            else:
+                                values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
+                        else:
+                            f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
+                            values = f(X)
+                        try:
+                            tokens, const_values = sympy_to_srtoolkit_tokens(expr)
+                            err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
+                            sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
+                            self.errors.append(err)
+                            self.sympy.append(expr)
+                        except Exception as A:
+                            print("Iteration omitted")
+                            print(A)
+                            tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                            sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                            self.errors.append(1000)
+                            self.sympy.append(sp.sympify('0'))
+        except Exception as A:
             print("Iteration omitted")
+            print(A)
             tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
             sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
             self.errors.append(1000)

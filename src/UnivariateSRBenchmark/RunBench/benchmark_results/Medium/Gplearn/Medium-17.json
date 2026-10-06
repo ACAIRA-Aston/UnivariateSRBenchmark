@@ -1,0 +1,87 @@
+{
+  "problem_id": "Medium-17",
+  "tier": "Medium",
+  "method": "Gplearn",
+  "original_equation": "1.20752229403757 + 5.07057979323449*tanh(0.8*x)**4/(tan(4.667*x + 1.275) - 3.187)",
+  "config": {
+    "population_size": 2000,
+    "generations": 500,
+    "tournament_size": 10,
+    "p_crossover": 0.6,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "atan(exp(cosh(sinh(X_0))))/(cosh(Abs(X_0)**(3/2)) + 1.0e-5)",
+    "acosh(acosh(exp(-cosh(1.45350949868457*X_0))))",
+    "acosh(sin(exp(-asinh(X_0)**4)))",
+    "0",
+    "-atan(cosh(asin(X_0))) + atan(asin(exp(acosh(atan(asin(2.66179311747164/(X_0**3 + 1.0e-5)))))/(X_0**3 + 1.0e-5)))",
+    "acosh(-asin(0.731/(cosh(X_0**2) + 1.0e-5)))",
+    "acosh(sin(exp(-X_0**3/(asin(X_0) + 1.0e-5))))",
+    "1.24729913909182/(cosh(cosh(X_0) - 0.765) + 1.0e-5)",
+    "-0.211 + acosh(sin(X_0))/(cosh(X_0) + 1.0e-5)",
+    "-sinh(atan(asin(log(Abs(X_0)))) - 0.807)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.842757506694646,
+      NaN,
+      NaN,
+      1.0222004016586264,
+      NaN,
+      NaN,
+      NaN,
+      0.8419504223769569,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      0.17495699304254453,
+      NaN,
+      NaN,
+      -0.0007140682795767628,
+      NaN,
+      NaN,
+      NaN,
+      0.17574711269979437,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      0.800196398118997,
+      NaN,
+      NaN,
+      0.8001963981184115,
+      NaN,
+      NaN,
+      NaN,
+      0.8001963981184115,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      -0.0797196157987825,
+      NaN,
+      NaN,
+      -0.07971961579799247,
+      NaN,
+      NaN,
+      NaN,
+      -0.07971961579799247,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.9023027769100764,
+    "inter_mse_std": 0.08478106377225217,
+    "inter_r2_mean": 0.11666334582092071,
+    "inter_r2_std": 0.08299899227483805,
+    "extra_mse_mean": 0.8001963981186067,
+    "extra_mse_std": 2.7602225423660766e-13,
+    "extra_r2_mean": -0.07971961579825582,
+    "extra_r2_std": 3.724259311997914e-13
+  }
+}

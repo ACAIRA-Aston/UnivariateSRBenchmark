@@ -1,0 +1,84 @@
+{
+  "problem_id": "Easy-33",
+  "tier": "Easy",
+  "method": "BSR",
+  "original_equation": "-0.17335838965592*x - 0.0206978745035426",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 50,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "tan((sqrt(X_0) - 1/X_0)**(1/4)/sqrt(1 - sqrt(sqrt(X_0) - 1/X_0)))",
+    "atanh(1/atan(exp(sin(atanh(exp(asin(sin(X_0)**2)))))))",
+    "atan(tan(exp(9*sqrt(cos(cos(tan(X_0)))) + 9*Abs(sinh(log(-log(X_0)))))))",
+    "0",
+    "0",
+    "cosh(cos(sinh(X_0 + log(1/acosh(X_0)))*asin(cosh(X_0))**3) + atanh(asinh(log(atanh(X_0)))))",
+    "0",
+    "log(log(cos(tan(tan(cosh(atan(acosh(log(atan(X_0))**2))))))))",
+    "cosh((-log(-X_0) - sinh(log(X_0)) + cosh(X_0**(3/2)) + cosh(cos(acosh(atan(X_0))))**2)**2)",
+    "cosh(exp(tan(X_0 + atanh(exp(sin(sin(X_0))))**2)**2))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      0.809399280111716,
+      0.809399280111716,
+      NaN,
+      0.809399280111716,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      -4.4634299076751205e-06,
+      -4.4634299076751205e-06,
+      NaN,
+      -4.4634299076751205e-06,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      2.715406470014367,
+      2.715406470014367,
+      NaN,
+      2.715406470014367,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      -0.00010777717441001755,
+      -0.00010777717441001755,
+      NaN,
+      -0.00010777717441001755,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.809399280111716,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -4.4634299076751205e-06,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.715406470014367,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.00010777717441001755,
+    "extra_r2_std": 0.0
+  }
+}

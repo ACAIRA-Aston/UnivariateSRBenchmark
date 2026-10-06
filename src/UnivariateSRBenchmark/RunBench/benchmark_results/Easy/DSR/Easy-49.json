@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-49",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.0329230059660588*x**2 + 0.0314527913501289*x - 1.11592995477939 + 0.0394017517069237/((3.233*x + 1.021)*tanh(0.533*x - 0.9) - 3.415)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-sin(sinh(X_0/sinh(sinh(atan(X_0)))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.09071891805190353
+    ],
+    "inter_r2": [
+      0.8641959034269737
+    ],
+    "extra_mse": [
+      2.8633526659786477
+    ],
+    "extra_r2": [
+      -22.651681690721453
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.09071891805190353,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.8641959034269737,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.8633526659786477,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -22.651681690721453,
+    "extra_r2_std": 0.0
+  }
+}

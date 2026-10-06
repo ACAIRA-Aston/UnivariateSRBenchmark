@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-0",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "0.076651196225988*x + 0.0578936527386616*Abs(4.537*x + 4.614) - 1.31348588165466",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "acos(sin(Abs(0.0554183453143115*X_0 + 1.07516299605101)) - 0.0608155727386475)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      1.7165982962599249
+    ],
+    "inter_r2": [
+      -1.0702274053329486
+    ],
+    "extra_mse": [
+      2.067798989488994
+    ],
+    "extra_r2": [
+      -1.0945230812275293
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.7165982962599249,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -1.0702274053329486,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.067798989488994,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -1.0945230812275293,
+    "extra_r2_std": 0.0
+  }
+}

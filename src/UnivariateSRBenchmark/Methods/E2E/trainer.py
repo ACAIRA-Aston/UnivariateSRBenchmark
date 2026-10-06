@@ -168,7 +168,7 @@ class Trainer(object):
             m = (m, False) if m[0] == "_" else (m, True)
             self.metrics.append(m)
         self.best_metrics = {
-            metric: (-np.infty if biggest else np.infty)
+            metric: (-np.inf if biggest else np.inf)
             for (metric, biggest) in self.metrics
         }
 

@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-4",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "0.0353592625556658*(x + 3.574)*log(2.49*x**2 - 2.06*x + 0.45) - 0.417499705929502",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "atan(0.340792665036738*X_0 - 1.34756649031552) + 0.517003953456879"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.0501323912294557
+    ],
+    "inter_r2": [
+      0.9326184873438831
+    ],
+    "extra_mse": [
+      0.36044546959954527
+    ],
+    "extra_r2": [
+      0.8887513363782091
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.0501323912294557,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.9326184873438831,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.36044546959954527,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.8887513363782091,
+    "extra_r2_std": 0.0
+  }
+}

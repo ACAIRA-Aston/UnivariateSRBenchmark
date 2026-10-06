@@ -1,0 +1,38 @@
+{
+  "problem_id": "Medium-9",
+  "tier": "Medium",
+  "method": "AIFeynman",
+  "original_equation": "0.828900772587781*tan(2.929*x) + 1.23165047932805*tan(1.01193653055799/(-4.1*x**5 + 4.44*x**4 - 2.923*x**3 + 0.175*x**2 + 3.528*x - 2.062)) + 0.0497132417994686",
+  "config": {
+    "polyfit_deg": 2,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "asin(exp(pi - X_0) - 666.0)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN
+    ],
+    "inter_r2": [
+      NaN
+    ],
+    "extra_mse": [
+      NaN
+    ],
+    "extra_r2": [
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": NaN,
+    "inter_mse_std": NaN,
+    "inter_r2_mean": NaN,
+    "inter_r2_std": NaN,
+    "extra_mse_mean": NaN,
+    "extra_mse_std": NaN,
+    "extra_r2_mean": NaN,
+    "extra_r2_std": NaN
+  }
+}

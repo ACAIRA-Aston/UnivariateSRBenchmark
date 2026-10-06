@@ -1,0 +1,85 @@
+{
+  "problem_id": "Medium-31",
+  "tier": "Medium",
+  "method": "TaylorGP",
+  "original_equation": "-1.01807082683025*sin(-1.49070298671544*x**2 + 0.100917155797485*x + 1.86218251710791) - 0.405451703549098*tan(x - 3.844/(0.174 - 4.264*x)) + 0.0623952970474177",
+  "config": {
+    "population_size": 200,
+    "generations": 500,
+    "crossover_rate": 0.8,
+    "mutation_rate": 0.05
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))",
+    "log(X_0)/cosh(X_0) + asinh(sin(0.576526998291448/X_0))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": NaN,
+    "inter_mse_std": NaN,
+    "inter_r2_mean": NaN,
+    "inter_r2_std": NaN,
+    "extra_mse_mean": NaN,
+    "extra_mse_std": NaN,
+    "extra_r2_mean": NaN,
+    "extra_r2_std": NaN
+  }
+}

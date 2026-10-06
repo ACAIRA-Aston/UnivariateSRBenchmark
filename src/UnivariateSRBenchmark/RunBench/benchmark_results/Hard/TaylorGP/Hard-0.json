@@ -1,0 +1,85 @@
+{
+  "problem_id": "Hard-0",
+  "tier": "Hard",
+  "method": "TaylorGP",
+  "original_equation": "-0.531541255884165 + 0.0840522879794969*(0.292*log(1.13916591115141*x + 11.4926591115141) - 2.637*asin(0.0152446679110187*x**2 + 0.0441559021157449*x - 0.967025812259315) - 1.161)**4/(3.343 - 1.023*x)",
+  "config": {
+    "population_size": 500,
+    "generations": 500,
+    "crossover_rate": 0.6,
+    "mutation_rate": 0.05
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))",
+    "1.93965534244343 - sqrt(log(sinh(X_0)))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": NaN,
+    "inter_mse_std": NaN,
+    "inter_r2_mean": NaN,
+    "inter_r2_std": NaN,
+    "extra_mse_mean": NaN,
+    "extra_mse_std": NaN,
+    "extra_r2_mean": NaN,
+    "extra_r2_std": NaN
+  }
+}

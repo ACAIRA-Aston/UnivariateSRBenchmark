@@ -1,0 +1,39 @@
+{
+  "problem_id": "Hard-4",
+  "tier": "Hard",
+  "method": "DSR",
+  "original_equation": "2.74458300785803*sqrt(10.3730673818351 - 3.806*atan(1.831*x + 4.251)/(-4.572*x**2 + 3.039*x + 4.176)) - 8.82074613405866 + 1.18454165207511/x",
+  "config": {
+    "n_samples": 100000,
+    "lr": 0.0003,
+    "risk": 0.5
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "1/(X_0 + atan(sin(X_0) - sin(X_0*exp(-X_0))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.20990903753442938
+    ],
+    "inter_r2": [
+      0.8107508701619112
+    ],
+    "extra_mse": [
+      0.0010096968289206986
+    ],
+    "extra_r2": [
+      0.9408733566171839
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.20990903753442938,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.8107508701619112,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.0010096968289206986,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.9408733566171839,
+    "extra_r2_std": 0.0
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "problem_id": "Hard-22",
+  "tier": "Hard",
+  "method": "DSR",
+  "original_equation": "0.000230178790416894*(x - 3.696*atan(3.572*x - 1.337) - 2.54)**5/sin(-1.45283804781718*x**2 + 0.484925917161941*x + 1.31463416142602) - 0.0174098788820624",
+  "config": {
+    "n_samples": 100000,
+    "lr": 0.0003,
+    "risk": 0.5
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "1/(X_0 - (X_0 + sinh(X_0))/(X_0*cosh(sinh(X_0))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.44950025506577285
+    ],
+    "inter_r2": [
+      0.42663812346335506
+    ],
+    "extra_mse": [
+      2.963146205100769
+    ],
+    "extra_r2": [
+      -0.006564379070678195
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.44950025506577285,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.42663812346335506,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.963146205100769,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.006564379070678195,
+    "extra_r2_std": 0.0
+  }
+}

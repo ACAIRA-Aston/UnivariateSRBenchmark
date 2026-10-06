@@ -21,6 +21,7 @@ import json
 
 import warnings
 warnings.filterwarnings("ignore")
+sys.setrecursionlimit(10000)
 
 
 sys.modules["symbolicregression"] = NeSymReS
@@ -91,42 +92,52 @@ class NeSymReSApproach(SR_approach):
         pass
 
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        y = sr_evaluator.y
-        X = np.zeros((len(sr_evaluator.X), 3))  # Nesymres always receives input matrices of this shape
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
+        X = np.zeros((len(X), 3))  # Nesymres always receives input matrices of this shape
         X[:, 0] = sr_evaluator.X[:, 0]
         X = torch.from_numpy(X).cuda()
         y = torch.from_numpy(y).cuda()
 
-        model = self.fitfunc(X, y)
+        try:
+            model = self.fitfunc(X, y)
 
-        # Extract and evaluate expressions
-        program = model['best_bfgs_preds'][0]
+            # Extract and evaluate expressions
+            program = model['best_bfgs_preds'][0]
 
-        if program is not None and not sr_evaluator.should_stop:
-            X_syms = {f'x_1':sp.Symbol('x_1')}
-            expr = sp.sympify(program).subs(X_syms['x_1'], sp.Symbol(f'X_0'))
-            print("Retrieved expression: ", expr)
+            if program is not None and not sr_evaluator.should_stop:
+                X_syms = {f'x_1':sp.Symbol('x_1')}
+                expr = sp.sympify(program).subs(X_syms['x_1'], sp.Symbol(f'X_0'))
+                print("Retrieved expression: ", expr)
 
-            if 'X_0' not in str(expr.free_symbols):
-                if expr.is_real:
-                    values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                if 'X_0' not in str(expr.free_symbols):
+                    if expr.is_real:
+                        values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                    else:
+                        values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
                 else:
-                    values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
-            else:
-                f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
-                values = f(sr_evaluator.X)
-            try:
-                tokens, const_values = sympy_to_srtoolkit_tokens(expr)
-                err = np.sqrt(np.mean((values[:, 0] - sr_evaluator.y) ** 2))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
-                self.errors.append(err)
-                self.sympy.append(expr)
-            except ValueError:
-                print("Iteration omitted")
-                tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
-                self.errors.append(1000)
-                self.sympy.append(sp.sympify('0'))
+                    f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
+                    values = f(sr_evaluator.X)
+                try:
+                    tokens, const_values = sympy_to_srtoolkit_tokens(expr)
+                    err = np.sqrt(np.mean((values[:, 0] - sr_evaluator.y) ** 2))
+                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
+                    self.errors.append(err)
+                    self.sympy.append(expr)
+                except ValueError:
+                    print("Iteration omitted")
+                    tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                    self.errors.append(1000)
+                    self.sympy.append(sp.sympify('0'))
+        except:
+            print("Iteration omitted")
+            tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+            sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+            self.errors.append(1000)
+            self.sympy.append(sp.sympify('0'))
 
     @classmethod
     def from_config(self, config: dict) -> "NeSymReSApproach":

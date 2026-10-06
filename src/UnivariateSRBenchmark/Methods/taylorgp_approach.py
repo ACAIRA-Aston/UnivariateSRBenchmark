@@ -103,8 +103,10 @@ class TaylorGPApproach(SR_approach):
         pass
 
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        X = sr_evaluator.X
-        y = sr_evaluator.y
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
 
         model = SymbolicRegressor(population_size=self.cfg.population_size, init_depth=(2, 5),
                         generations=self.cfg.generations, stopping_criteria=1e-10,
@@ -117,31 +119,33 @@ class TaylorGPApproach(SR_approach):
                         const_range=(-1, 1),
                         random_state=42, low_memory=True,
                         max_time = 3600-10)
-        model.fit(X, y)
-
         try:
+            model.fit(X, y)
             expr = model.sympy_global_best.subs(sp.Symbol('x0'), sp.Symbol('X_0'))
-        except Exception:
-            print("Iteration omitted")
-            return
 
-        print('Expr', expr)
-        if 'X_0' not in str(expr.free_symbols):
-            if expr.is_real:
-                values = np.repeat(float(expr), len(X), axis=0)[:, None]
+            print('Expr', expr)
+            if 'X_0' not in str(expr.free_symbols):
+                if expr.is_real:
+                    values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                else:
+                    values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
             else:
-                values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
-        else:
-            f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
-            values = f(X)
-            values = np.asarray(values).reshape(-1, 1) if np.ndim(values) < 2 else values
-        try:
-            tokens, const_values = sympy_to_srtoolkit_tokens(expr)
-            err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
-            sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
-            self.errors.append(err)
-            self.sympy.append(expr)
-        except ValueError:
+                f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
+                values = f(X)
+                values = np.asarray(values).reshape(-1, 1) if np.ndim(values) < 2 else values
+            try:
+                tokens, const_values = sympy_to_srtoolkit_tokens(expr)
+                err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
+                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
+                self.errors.append(err)
+                self.sympy.append(expr)
+            except:
+                print("Iteration omitted")
+                tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                self.errors.append(1000)
+                self.sympy.append(sp.sympify('0'))
+        except:
             print("Iteration omitted")
             tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
             sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)

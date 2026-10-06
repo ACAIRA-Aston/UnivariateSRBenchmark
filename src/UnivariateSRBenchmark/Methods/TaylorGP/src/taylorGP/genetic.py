@@ -973,7 +973,7 @@ class BaseSymbolic(BaseEstimator, metaclass=ABCMeta):
             else:
                 self._program = self._programs[-1][np.argmin(fitness)]
         if  self._program.raw_fitness_ <self.global_fitness:
-            self.sympy_global_best = sympify(self._program)
+            self.sympy_global_best = sympify(str(self._program))
             self.global_fitness = self._program.raw_fitness_
             self.best_is_gp = True
 

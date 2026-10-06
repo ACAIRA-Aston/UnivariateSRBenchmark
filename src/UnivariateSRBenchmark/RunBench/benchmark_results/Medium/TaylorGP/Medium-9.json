@@ -1,0 +1,85 @@
+{
+  "problem_id": "Medium-9",
+  "tier": "Medium",
+  "method": "TaylorGP",
+  "original_equation": "0.828900772587781*tan(2.929*x) + 1.23165047932805*tan(1.01193653055799/(-4.1*x**5 + 4.44*x**4 - 2.923*x**3 + 0.175*x**2 + 3.528*x - 2.062)) + 0.0497132417994686",
+  "config": {
+    "population_size": 200,
+    "generations": 500,
+    "crossover_rate": 0.8,
+    "mutation_rate": 0.05
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))",
+    "-asinh(0.659874663731326/(atanh(X_0) + 0.61754706176468))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": NaN,
+    "inter_mse_std": NaN,
+    "inter_r2_mean": NaN,
+    "inter_r2_std": NaN,
+    "extra_mse_mean": NaN,
+    "extra_mse_std": NaN,
+    "extra_r2_mean": NaN,
+    "extra_r2_std": NaN
+  }
+}

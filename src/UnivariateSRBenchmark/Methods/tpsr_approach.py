@@ -11,7 +11,8 @@ from UnivariateSRBenchmark.Methods.E2E.model.sklearn_wrapper import SymbolicTran
 from SRToolkit.utils.types import ModelResult
 import sys
 from UnivariateSRBenchmark.Methods.TPSR.symbolicregression.envs import build_env
-from UnivariateSRBenchmark.Methods.TPSR.symbolicregression.e2e_model import Transformer, pred_for_sample_no_refine, respond_to_batch , pred_for_sample, refine_for_sample, pred_for_sample_test, refine_for_sample_test
+from UnivariateSRBenchmark.Methods.TPSR.symbolicregression.e2e_model import Transformer, pred_for_sample_no_refine, \
+    respond_to_batch, pred_for_sample, refine_for_sample, pred_for_sample_test, refine_for_sample_test
 from UnivariateSRBenchmark.Methods.TPSR.dyna_gym.agents.uct import UCT
 from UnivariateSRBenchmark.Methods.TPSR.dyna_gym.agents.mcts import update_root, convert_to_json, print_tree
 from UnivariateSRBenchmark.Methods.TPSR.rl_env import RLEnv
@@ -19,13 +20,29 @@ from UnivariateSRBenchmark.Methods.TPSR.default_pi import E2EHeuristic, Nesymres
 from UnivariateSRBenchmark.Methods.TPSR.symbolicregression.metrics import compute_metrics
 
 import warnings
+
 warnings.filterwarnings("ignore")
 
-
-sys.modules["symbolicregression"] = TPSR
 import pathlib
+
+pathlib.WindowsPath.__new__ = pathlib.PureWindowsPath.__new__
+
+sys.modules["symbolicregression"] = TPSR.symbolicregression
+sys.modules["symbolicregression.model"] = TPSR.symbolicregression.model
+sys.modules["symbolicregression.envs"] = TPSR.symbolicregression.envs
+
+import pathlib
+
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath  # This deals with PosixPath errors when loading the model
+
+from pathlib import Path
+
+TPSR_DIR = Path(__file__).parent / "TPSR"
+
+if str(TPSR_DIR) not in sys.path:
+    sys.path.insert(0, str(TPSR_DIR))
+
 
 # Tuning Grid
 #   lambda_reg: [0.01, 0.1, 1.0, 5.0]
@@ -65,12 +82,11 @@ class TPSRConfig(ApproachConfig):
     beams: int = 1
 
 
-
 class TPSRApproach(SR_approach):
     def __init__(self, lambda_reg: float = 0.1,
-                        width: int = 3,
-                        rollout: int = 3,
-                        beams: int = 1):
+                 width: int = 3,
+                 rollout: int = 3,
+                 beams: int = 1):
         self.cfg = TPSRConfig(lambda_reg=lambda_reg, width=width, rollout=rollout, beams=beams)
         super().__init__(self.cfg)
         self.sympy = []
@@ -159,10 +175,11 @@ class TPSRApproach(SR_approach):
 
         return mcts_str_refine
 
-
     def search(self, sr_evaluator: SR_evaluator, seed: Optional[int] = None):
-        X = sr_evaluator.X
-        y = sr_evaluator.y
+        inds =np.arange(len(sr_evaluator.X))
+        np.random.shuffle(inds)
+        X = sr_evaluator.X[inds]
+        y = sr_evaluator.y[inds]
         data = np.concatenate((X, y[:, None]), axis=1)
         samples = {'x_to_fit': 0, 'y_to_fit': 0, 'x_to_pred': 0, 'y_to_pred': 0}
         samples['x_to_fit'] = [data[:, :-1]]
@@ -172,38 +189,48 @@ class TPSRApproach(SR_approach):
 
         # equation_env = build_env(self.params)
 
-        mcts_str_refine = self.main_e2e(samples=samples)
-        model = sp.parse_expr(mcts_str_refine)
+        try:
+            mcts_str_refine = self.main_e2e(samples=samples)
+            model = sp.parse_expr(mcts_str_refine)
 
-        if model is not None and not sr_evaluator.should_stop:
-            X_syms = {f'x_0':sp.Symbol('x_0')}
-            expr = model.subs(X_syms['x_0'], sp.Symbol(f'X_0'))
-            print("Retrieved expression: ", expr)
+            if model is not None and not sr_evaluator.should_stop:
+                X_syms = {f'x_0': sp.Symbol('x_0'), f'x_1': sp.Symbol('x_1')}
+                expr = model.subs(X_syms['x_0'], sp.Symbol(f'X_0'))
+                expr = expr.subs(X_syms['x_1'], sp.Symbol(f'X_0'))
+                print("Retrieved expression: ", expr)
 
-            if 'X_0' not in str(expr.free_symbols):
-                if expr.is_real:
-                    values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                if 'X_0' not in str(expr.free_symbols):
+                    if expr.is_real:
+                        values = np.repeat(float(expr), len(X), axis=0)[:, None]
+                    else:
+                        values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
                 else:
-                    values = np.repeat(1000, len(X), axis=0)[:, None]  # Penalize these cases
-            else:
-                f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
-                values = f(X)
-            try:
-                tokens, const_values = sympy_to_srtoolkit_tokens(expr)
-                err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
-                self.errors.append(err)
-                self.sympy.append(expr)
-            except ValueError:
-                print("Iteration omitted")
-                tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
-                self.errors.append(1000)
-                self.sympy.append(sp.sympify('0'))
+                    f = sp.lambdify(sp.Symbol('X_0'), expr, modules="numpy")
+                    values = f(X)
+                try:
+                    tokens, const_values = sympy_to_srtoolkit_tokens(expr)
+                    err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
+                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
+                    self.errors.append(err)
+                    self.sympy.append(expr)
+                except Exception as A:
+                    print("Iteration omitted")
+                    print(A)
+                    tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                    self.errors.append(1000)
+                    self.sympy.append(sp.sympify('0'))
 
-        del model
-        gc.collect()
-        torch.cuda.empty_cache()
+            del model
+            gc.collect()
+            torch.cuda.empty_cache()
+        except Exception as A:
+            print("Iteration omitted")
+            print(A)
+            tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
+            sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+            self.errors.append(1000)
+            self.sympy.append(sp.sympify('0'))
 
     @classmethod
     def from_config(self, config: dict) -> "TPSRApproach":
@@ -211,4 +238,4 @@ class TPSRApproach(SR_approach):
                     width=config.get("width", 3),
                     rollout=config.get("rollout", 3),
                     beams=config.get("beams", 1)
-        )
+                    )

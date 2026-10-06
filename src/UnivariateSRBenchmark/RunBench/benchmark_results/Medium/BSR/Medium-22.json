@@ -1,0 +1,84 @@
+{
+  "problem_id": "Medium-22",
+  "tier": "Medium",
+  "method": "BSR",
+  "original_equation": "1.46512966003334*sin(1.648*x + sin(0.0742713869604503*x**3 + 0.00332527037113946*x**2 + 0.0728613039549671*x + 0.0552878814239453) - 1.627) + 0.031638659334885 - 0.299250339059097/(x + 2.346)",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 200,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "acosh(tanh(exp(tan(exp(-X_0 + cos(sqrt(X_0) + 1/log(tan(Abs(sin(X_0))))))))))",
+    "0",
+    "log(exp(sqrt(cos(sinh(exp(X_0) - asin(atan(tan(atanh(tanh(asin(64*X_0**6)))))))))))",
+    "asinh(log(atan(log(X_0))))",
+    "asinh(X_0)",
+    "0",
+    "log(X_0)",
+    "atanh(X_0)",
+    "X_0**3",
+    "log(tan(acosh(X_0)))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      0.959677381843263,
+      NaN,
+      NaN,
+      5.780243611199241,
+      0.959677381843263,
+      NaN,
+      NaN,
+      78437.44254821354,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      -0.015216247613410783,
+      NaN,
+      NaN,
+      -5.114760377057103,
+      -0.015216247613410783,
+      NaN,
+      NaN,
+      -82975.8082511664,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      1.3629035628303878,
+      NaN,
+      NaN,
+      10.106530223750994,
+      1.3629035628303878,
+      NaN,
+      NaN,
+      749557.5142614486,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      -5.889821327912815,
+      NaN,
+      NaN,
+      -50.091059841525066,
+      -5.889821327912815,
+      NaN,
+      NaN,
+      -3789201.324433675,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 19611.28553664711,
+    "inter_mse_std": 33963.29764303616,
+    "inter_r2_mean": -20745.23836100967,
+    "inter_r2_std": 35928.83633822261,
+    "extra_mse_mean": 187392.58664969951,
+    "extra_mse_std": 324566.07230523886,
+    "extra_r2_mean": -947315.798784043,
+    "extra_r2_std": 1640763.3733391457
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-23",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "-1.11976613663427 + 3.29706261979119*(0.043*x**2 + 0.486*x - 1.066)/(4.854*atan(3.402*x) - 0.656)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.7597827856529386
+    ],
+    "inter_r2": [
+      -0.01800672267652592
+    ],
+    "extra_mse": [
+      3.1619549384659527
+    ],
+    "extra_r2": [
+      -0.5250246394074567
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.7597827856529386,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.01800672267652592,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 3.1619549384659527,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.5250246394074567,
+    "extra_r2_std": 0.0
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "problem_id": "Medium-18",
+  "tier": "Medium",
+  "method": "Gplearn",
+  "original_equation": "0.233561890782502*(1.313046*Abs(x) - 2.797)**4/(-4.846*x**4 + 0.319*x**3 - 0.816*x**2 - 4.236*x + 1.897623*Abs(x) + 2.529) - 0.186123583684396",
+  "config": {
+    "population_size": 2000,
+    "generations": 500,
+    "tournament_size": 10,
+    "p_crossover": 0.6,
+    "p_subtree_mutation": 0.2,
+    "parsimony_coefficient": 0.001
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "-asin((tanh(Abs(atanh(asinh(X_0)) + 0.569))**3 - 0.609)/(2*Abs(X_0) + 1.0e-5)) + atanh(atanh(atanh(atanh(0.215/(Abs(X_0 - 0.238) + 1.0e-5))) - 0.209))",
+    "sinh(0.612*atanh(sinh(sinh(sin(sin(sinh(cosh(asin(atanh(sqrt(Abs(X_0 - 0.164))))))))))) - 0.095)",
+    "atanh(log(Abs(cosh(atan(tanh(asin(asinh(3.83127083253515*X_0)))))/(asin(exp(X_0) - 1.24849140907601) + 1.0e-5))))",
+    "-atanh(atanh(sin(asinh(Abs(atan(atanh(X_0) - 0.21)**3))) - 0.805))",
+    "-asinh(atanh(atanh(atanh(log(Abs(asin(atanh(atanh(X_0)) - 0.286))))))**3)",
+    "0",
+    "-0.204/(tanh(asin(asin(sqrt(Abs(asin(X_0))))) - 0.857/(1.0e-5 - log(Abs(X_0)))) + 1.0e-5)",
+    "log(Abs(asinh((X_0 - log(Abs(X_0 - log(Abs(X_0))/(asin(X_0)**3 + 1.0e-5)))/(asin(X_0)**3 + 1.0e-5))/(X_0 + 1.0e-5))))",
+    "-1.26901942868745*atanh(asin(tanh((X_0 + atan(acosh((X_0 + Abs(X_0) - 0.852)**3)) - 0.788)*atanh(X_0)) - 0.844))",
+    "-atanh(log(Abs(asinh(asin(asinh(asinh(asin(asinh(asinh(asin(asinh(atan(atanh(X_0) - 0.206)))))))))))))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      1.1048195506424516,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      -0.0006331019685372752,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_mse": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      0.056624044947612764,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ],
+    "extra_r2": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      -16882.54438139857,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.1048195506424516,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.0006331019685372752,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.056624044947612764,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -16882.54438139857,
+    "extra_r2_std": 0.0
+  }
+}

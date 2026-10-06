@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-41",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.00871120258941594*(x - 1.708)*exp(-0.291*x**2 + 2.408*x) - 0.509084961302472",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-sinh(sin(X_0) - Abs(atan(sinh(atan(exp(atan(atan(X_0))))))))*atan(sinh(tanh(X_0)))"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.34468353366307725
+    ],
+    "inter_r2": [
+      0.6806521490372406
+    ],
+    "extra_mse": [
+      1.477410723557505
+    ],
+    "extra_r2": [
+      -193670.10007900232
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.34468353366307725,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.6806521490372406,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 1.477410723557505,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -193670.10007900232,
+    "extra_r2_std": 0.0
+  }
+}

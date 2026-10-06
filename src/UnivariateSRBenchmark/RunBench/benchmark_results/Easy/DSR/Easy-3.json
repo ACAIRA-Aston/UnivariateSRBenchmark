@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-3",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "-0.048867399214893 - 1.26445390595607/(0.849*x + 1.401*sin(2.911*x)*atan(0.321*x**3 - x**2 + 0.637*x - 3.214))",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "sin(atan((-X_0 + atan(1/sinh(X_0)))*sinh(X_0))/X_0)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.7017378863283147
+    ],
+    "inter_r2": [
+      0.3666410453132265
+    ],
+    "extra_mse": [
+      0.0016298934230911724
+    ],
+    "extra_r2": [
+      0.9403935013148688
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.7017378863283147,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.3666410453132265,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.0016298934230911724,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.9403935013148688,
+    "extra_r2_std": 0.0
+  }
+}

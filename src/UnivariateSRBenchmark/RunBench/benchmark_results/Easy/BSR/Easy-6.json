@@ -1,0 +1,84 @@
+{
+  "problem_id": "Easy-6",
+  "tier": "Easy",
+  "method": "BSR",
+  "original_equation": "0.0533563319336985*(3.819 - 4.11*x)*sin(3.48*sin(-0.0848040988071475*x**3 + 0.177655301880667*x**2 + 0.975350304285612*x + 0.903958045922417) - 1.213) - 0.0632259474153378",
+  "config": {
+    "tree_num": 2,
+    "iter_num": 50,
+    "beta": -0.1
+  },
+  "num_experiments": 10,
+  "learned_expressions": [
+    "acosh(cosh(sin(X_0)))*sqrt(atan(cos(sqrt(cosh((-X_0 + (tan(acosh(sqrt(cosh(sqrt(X_0))))) + acosh(X_0)**12)**2)**2)))))",
+    "atanh(cos(sqrt(atan(exp(atan(atanh(tan(X_0))))))))",
+    "0",
+    "exp(acosh(X_0))",
+    "asinh(asin(X_0))",
+    "0",
+    "asin(sin(cosh(-X_0 + sin(sinh(X_0))**3 + cos(Abs(acosh(X_0))))))",
+    "-tan(asinh(X_0**3/(1 - X_0**2)**(3/2)))",
+    "-cosh(cos(sin(asin(cosh(Abs(tan(asinh(acosh(-X_0 + cosh(X_0)))))))**3)))",
+    "0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      NaN,
+      NaN,
+      0.8095499484203542,
+      NaN,
+      NaN,
+      0.8095499484203542,
+      NaN,
+      NaN,
+      NaN,
+      0.8095499484203542
+    ],
+    "inter_r2": [
+      NaN,
+      NaN,
+      -3.726589669295066e-05,
+      NaN,
+      NaN,
+      -3.726589669295066e-05,
+      NaN,
+      NaN,
+      NaN,
+      -3.726589669295066e-05
+    ],
+    "extra_mse": [
+      NaN,
+      3.300150838369249,
+      2.7140504603662294,
+      NaN,
+      NaN,
+      2.7140504603662294,
+      NaN,
+      NaN,
+      NaN,
+      2.7140504603662294
+    ],
+    "extra_r2": [
+      NaN,
+      -0.21704618946948884,
+      -0.0009011504603990694,
+      NaN,
+      NaN,
+      -0.0009011504603990694,
+      NaN,
+      NaN,
+      NaN,
+      -0.0009011504603990694
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.8095499484203542,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -3.726589669295066e-05,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.8605755548669842,
+    "extra_mse_std": 0.2537889082591386,
+    "extra_r2_mean": -0.05493741021267151,
+    "extra_r2_std": 0.0935935473419251
+  }
+}

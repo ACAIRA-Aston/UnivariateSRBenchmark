@@ -1,0 +1,38 @@
+{
+  "problem_id": "Easy-36",
+  "tier": "Easy",
+  "method": "AIFeynman",
+  "original_equation": "0.637549615043527*sqrt(11.430597545399 - 1.1320597545399*x)/((-1.955*x - 1.255)*cosh(0.00628896208541983*x**3 - 0.0153262006021681*x**2 + 0.0178417854363361*x)) - 0.00214719190176265",
+  "config": {
+    "polyfit_deg": 3,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-tan(atan(1/(X_0 + exp(X_0))) + 0.116667140766)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      178.9838638966632
+    ],
+    "inter_r2": [
+      -160.0855922493894
+    ],
+    "extra_mse": [
+      0.006576195147959686
+    ],
+    "extra_r2": [
+      -10562.96367432561
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 178.9838638966632,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -160.0855922493894,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.006576195147959686,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -10562.96367432561,
+    "extra_r2_std": 0.0
+  }
+}

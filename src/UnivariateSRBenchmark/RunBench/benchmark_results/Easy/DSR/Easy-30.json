@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-30",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.0613303646968467*x - 0.127383167475351*(2.306*sin(3.553*x - 0.603) - 0.21)**(13/5)*atanh(0.0183650353086493*x**2 + 0.015900463470692*x - 0.995558357738946) + 0.146900538457764",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-sin(2*X_0 - 2*sinh(Abs(asinh(X_0))))/X_0"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.6235866306645155
+    ],
+    "inter_r2": [
+      0.422612600393789
+    ],
+    "extra_mse": [
+      0.25318245227996555
+    ],
+    "extra_r2": [
+      0.09396675393678211
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.6235866306645155,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.422612600393789,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.25318245227996555,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.09396675393678211,
+    "extra_r2_std": 0.0
+  }
+}

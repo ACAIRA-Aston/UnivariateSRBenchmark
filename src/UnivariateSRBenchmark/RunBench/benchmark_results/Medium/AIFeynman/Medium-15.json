@@ -1,0 +1,38 @@
+{
+  "problem_id": "Medium-15",
+  "tier": "Medium",
+  "method": "AIFeynman",
+  "original_equation": "1.39758810394037*sin(x/(-1.412*x**6 - 3.621*x**5 + 4.936*x**4 + 1.868*x**3 + 2.659*x**2 - 1.704*x + 4.542) + 3.118*log(10.6608414434155 - 1.05617467753249*x) + 1.619) + 0.197139573682465",
+  "config": {
+    "polyfit_deg": 2,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "acos(cos(sin(X_0 - 1.07943642139435)) - 0.0262336619198322)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      1.3771540121818677
+    ],
+    "inter_r2": [
+      -0.44113157362734046
+    ],
+    "extra_mse": [
+      2.734297053933482
+    ],
+    "extra_r2": [
+      -1.1005530523721845
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.3771540121818677,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.44113157362734046,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 2.734297053933482,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -1.1005530523721845,
+    "extra_r2_std": 0.0
+  }
+}

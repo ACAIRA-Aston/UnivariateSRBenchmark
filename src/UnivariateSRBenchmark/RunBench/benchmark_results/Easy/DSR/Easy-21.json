@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-21",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.00055234479013948 - 1.40279768164327*sin(1.231*x)",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "-sin(4*X_0/pi)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.10710303943334766
+    ],
+    "inter_r2": [
+      0.8914821085253889
+    ],
+    "extra_mse": [
+      0.3417940236068805
+    ],
+    "extra_r2": [
+      0.6940983505386102
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.10710303943334766,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.8914821085253889,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.3417940236068805,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.6940983505386102,
+    "extra_r2_std": 0.0
+  }
+}

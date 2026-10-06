@@ -1,0 +1,39 @@
+{
+  "problem_id": "Easy-45",
+  "tier": "Easy",
+  "method": "DSR",
+  "original_equation": "0.078869008818735*(x + 1.978)*log(x + 10.0973432781484) - 0.689435709552882",
+  "config": {
+    "n_samples": 1000000,
+    "lr": 0.0003,
+    "risk": 0.1
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "asinh(X_0) - atan(X_0 + 1)"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      0.051880565172272596
+    ],
+    "inter_r2": [
+      0.9402565568917062
+    ],
+    "extra_mse": [
+      0.9387834669011231
+    ],
+    "extra_r2": [
+      0.3175552286263199
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 0.051880565172272596,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": 0.9402565568917062,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.9387834669011231,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": 0.3175552286263199,
+    "extra_r2_std": 0.0
+  }
+}

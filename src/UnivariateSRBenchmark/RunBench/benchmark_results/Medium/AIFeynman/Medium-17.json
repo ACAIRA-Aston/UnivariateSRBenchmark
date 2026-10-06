@@ -1,0 +1,38 @@
+{
+  "problem_id": "Medium-17",
+  "tier": "Medium",
+  "method": "AIFeynman",
+  "original_equation": "1.20752229403757 + 5.07057979323449*tanh(0.8*x)**4/(tan(4.667*x + 1.275) - 3.187)",
+  "config": {
+    "polyfit_deg": 2,
+    "NN_epochs": 2000
+  },
+  "num_experiments": 1,
+  "learned_expressions": [
+    "0.000313042988251003"
+  ],
+  "raw_metrics": {
+    "inter_mse": [
+      1.022183590695663
+    ],
+    "inter_r2": [
+      -0.000697610677807603
+    ],
+    "extra_mse": [
+      0.8003486767434288
+    ],
+    "extra_r2": [
+      -0.07992508812814103
+    ]
+  },
+  "summary_metrics": {
+    "inter_mse_mean": 1.022183590695663,
+    "inter_mse_std": 0.0,
+    "inter_r2_mean": -0.000697610677807603,
+    "inter_r2_std": 0.0,
+    "extra_mse_mean": 0.8003486767434288,
+    "extra_mse_std": 0.0,
+    "extra_r2_mean": -0.07992508812814103,
+    "extra_r2_std": 0.0
+  }
+}
