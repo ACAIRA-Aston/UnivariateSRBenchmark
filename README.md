@@ -107,7 +107,7 @@ If you use this benchmark or its results, please cite the ExCAUS work and acknow
   year={2026},
   month={},
   pages={},
-  doi={}
+  doi={10.1109/LCI.2026.3753204}
 }
 ```
 
