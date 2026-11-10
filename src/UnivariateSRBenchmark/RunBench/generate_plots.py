@@ -201,7 +201,7 @@ def plot_r2_extrapolation_all_tiers(
     save_path: Path = None, dark_mode: bool = False
 ):
     """Plot R² extrapolation boxplots formatted for compact figures."""
-    fig, axes = plt.subplots(1, 3, figsize=(10, 4), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(10, 4), sharey=False)
     fig.patch.set_alpha(0.0)  # Set figure background transparent
     for ax in axes:
         ax.patch.set_alpha(0.0)
@@ -296,7 +296,7 @@ def plot_mse_extrapolation_all_tiers(
     mse_max_thresholds: Union[float, None, Dict[str, Optional[float]]] = DEFAULT_MSE_MAX_THRESHOLDS,
     save_path: Path = None, dark_mode: bool = False
 ):
-    fig, axes = plt.subplots(1, 3, figsize=(10, 4), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(10, 4), sharey=False)
     fig.patch.set_alpha(0.0)
     for ax in axes:
         ax.patch.set_alpha(0.0)
