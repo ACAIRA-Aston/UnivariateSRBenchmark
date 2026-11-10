@@ -191,13 +191,13 @@ class IteaApproach(SR_approach):
                     print("Not tokenizable (yet), using a placeholder instead")
                     tokens = str(expr)
                 err = np.sqrt(np.mean((values[:, 0] - y) ** 2))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
+                sr_evaluator.models["".join(tokens)] = ModelResult(expr=tokens, error=err)
                 self.errors.append(err)
                 self.sympy.append(expr)
             except ValueError:
                 print("Iteration omitted")
                 tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify("0"))
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                sr_evaluator.models["".join(tokens)] = ModelResult(expr=tokens, error=1000)
                 self.errors.append(1000)
                 self.sympy.append(sp.sympify("0"))
 

@@ -212,17 +212,7 @@ class GplearnApproach(SR_approach):
             queue = mp.Queue()
 
             # Spawn worker process
-            p = mp.Process(
-                target=_search_worker,
-                args=(
-                    self.cfg,
-                    self.function_set,
-                    X,
-                    y,
-                    seed,
-                    queue
-                )
-            )
+            p = mp.Process(target=_search_worker, args=(self.cfg, self.function_set, X.copy(), y.copy(), seed, queue))
             p.start()
 
             # Block main process for up to `timeout` seconds
@@ -239,7 +229,7 @@ class GplearnApproach(SR_approach):
                 else:
                     print("Iteration omitted")
                     tokens, const_values = sympy_to_srtoolkit_tokens(sp.sympify('0'))
-                    sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=1000)
+                    sr_evaluator.models["".join(tokens)] = ModelResult(expr=tokens, error=1000)
                     self.errors.append(1000)
                     self.sympy.append(sp.sympify('0'))
                     break
@@ -252,7 +242,13 @@ class GplearnApproach(SR_approach):
                 expr = res["expr"]
 
                 # Update main process state
-                sr_evaluator.models[tuple(tokens)] = ModelResult(expr=tokens, error=err)
+                # sr_evaluator.evaluate_expr(tokens)
+                # try:
+                #     if abs(sr_evaluator.models["".join(tokens)].error - err) > 0.001:
+                #         print("Errors are different here")
+                # except Exception as e:
+                #     print(e)
+                sr_evaluator.models["".join(tokens)] = ModelResult(expr=tokens, error=err)
                 self.errors.append(err)
                 self.sympy.append(expr)
                 break
